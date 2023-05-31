@@ -27,7 +27,7 @@ Contribution guide is [here](CONTRIBUTING.md).
 
 ## Implemented coins
 
-Blockbook currently supports over 30 coins. The Trezor team implemented 
+Blockbook currently supports over 30 coins. The Delta team implemented 
 
 - Bitcoin, Bitcoin Cash, Zcash, Dash, Litecoin, Bitcoin Gold, Ethereum, Ethereum Classic, Dogecoin, Namecoin, Vertcoin, DigiByte, Liquid
 
