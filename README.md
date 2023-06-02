@@ -2,7 +2,11 @@
 
 # Blockbook
 
+<<<<<<< HEAD
 **Blockbook** is back-end service for deta wallet. Main features of **Blockbook** are:
+=======
+**Blockbook** is back-end service for Delta wallet. Main features of **Blockbook** are:
+>>>>>>> edfbfa1efde2c9961732cdc29b39797d1e757354
 
 - index of addresses and address balances of the connected block chain
 - fast index search
@@ -27,7 +31,11 @@ Contribution guide is [here](CONTRIBUTING.md).
 
 ## Implemented coins
 
+<<<<<<< HEAD
 Blockbook currently supports over 30 coins. The deta team implemented 
+=======
+Blockbook currently supports over 30 coins. The Delta team implemented 
+>>>>>>> edfbfa1efde2c9961732cdc29b39797d1e757354
 
 - Bitcoin, Bitcoin Cash, Zcash, Dash, Litecoin, Bitcoin Gold, Ethereum, Ethereum Classic, Dogecoin, Namecoin, Vertcoin, DigiByte, Liquid
 
