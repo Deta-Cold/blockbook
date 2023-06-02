@@ -13,11 +13,11 @@ import (
 	"github.com/juju/errors"
 	gosocketio "github.com/martinboehm/golang-socketio"
 	"github.com/martinboehm/golang-socketio/transport"
-	"github.com/trezor/blockbook/api"
-	"github.com/trezor/blockbook/bchain"
-	"github.com/trezor/blockbook/common"
-	"github.com/trezor/blockbook/db"
-	"github.com/trezor/blockbook/fiat"
+	"github.com/deta/blockbook/api"
+	"github.com/deta/blockbook/bchain"
+	"github.com/deta/blockbook/common"
+	"github.com/deta/blockbook/db"
+	"github.com/deta/blockbook/fiat"
 )
 
 // SocketIoServer is handle to SocketIoServer
@@ -484,7 +484,7 @@ type resultGetBlockHeader struct {
 
 func (s *SocketIoServer) getBlockHeader(height uint32, hash string) (res resultGetBlockHeader, err error) {
 	if hash == "" {
-		// trezor is interested only in hash
+		// deta is interested only in hash
 		hash, err = s.db.GetBlockHash(height)
 		if err != nil {
 			return

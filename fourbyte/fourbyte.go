@@ -11,8 +11,8 @@ import (
 
 	"github.com/golang/glog"
 	"github.com/linxGnu/grocksdb"
-	"github.com/trezor/blockbook/bchain"
-	"github.com/trezor/blockbook/db"
+	"github.com/deta/blockbook/bchain"
+	"github.com/deta/blockbook/db"
 )
 
 // Coingecko is a structure that implements RatesDownloaderInterface

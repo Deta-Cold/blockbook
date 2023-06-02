@@ -10,8 +10,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/trezor/blockbook/bchain"
-	"github.com/trezor/blockbook/bchain/coins/btc"
+	"github.com/deta/blockbook/bchain"
+	"github.com/deta/blockbook/bchain/coins/btc"
 
 	"github.com/martinboehm/btcutil/chaincfg"
 )

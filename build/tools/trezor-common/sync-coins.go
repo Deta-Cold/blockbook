@@ -13,15 +13,15 @@ import (
 	"strconv"
 	"strings"
 
-	build "github.com/trezor/blockbook/build/tools"
+	build "github.com/deta/blockbook/build/tools"
 )
 
 const (
 	configsDir          = "configs"
-	trezorCommonDefsURL = "https://raw.githubusercontent.com/trezor/trezor-firmware/master/common/defs/bitcoin/"
+	detaCommonDefsURL = "https://raw.githubusercontent.com/deta/deta-firmware/master/common/defs/bitcoin/"
 )
 
-type trezorCommonDef struct {
+type detaCommonDef struct {
 	Name                  string `json:"coin_name"`
 	Shortcut              string `json:"coin_shortcut"`
 	Label                 string `json:"coin_label"`
@@ -31,8 +31,8 @@ type trezorCommonDef struct {
 	Slip44                uint32 `json:"slip44,omitempty"`
 }
 
-func getTrezorCommonDef(coin string) (*trezorCommonDef, error) {
-	req, err := http.NewRequest("GET", trezorCommonDefsURL+coin+".json", nil)
+func getdetaCommonDef(coin string) (*detaCommonDef, error) {
+	req, err := http.NewRequest("GET", detaCommonDefsURL+coin+".json", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -48,7 +48,7 @@ func getTrezorCommonDef(coin string) (*trezorCommonDef, error) {
 	if err != nil {
 		return nil, err
 	}
-	var tcd trezorCommonDef
+	var tcd detaCommonDef
 	json.Unmarshal(bb, &tcd)
 	return &tcd, nil
 }
@@ -90,8 +90,8 @@ func main() {
 	for _, coin := range coins {
 		config, err := build.LoadConfig(configsDir, coin)
 		if err == nil {
-			var tcd *trezorCommonDef
-			tcd, err = getTrezorCommonDef(coin)
+			var tcd *detaCommonDef
+			tcd, err = getdetaCommonDef(coin)
 			if err == nil {
 				if tcd.Name != "" {
 					config.Coin.Name = tcd.Name

@@ -10,10 +10,10 @@ import (
 
 	"github.com/juju/errors"
 	"github.com/linxGnu/grocksdb"
-	"github.com/trezor/blockbook/bchain"
-	"github.com/trezor/blockbook/bchain/coins/eth"
-	"github.com/trezor/blockbook/common"
-	"github.com/trezor/blockbook/tests/dbtestdata"
+	"github.com/deta/blockbook/bchain"
+	"github.com/deta/blockbook/bchain/coins/eth"
+	"github.com/deta/blockbook/common"
+	"github.com/deta/blockbook/tests/dbtestdata"
 )
 
 type testEthereumParser struct {

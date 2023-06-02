@@ -18,8 +18,8 @@ import (
 	"github.com/golang/glog"
 	"github.com/juju/errors"
 	"github.com/linxGnu/grocksdb"
-	"github.com/trezor/blockbook/bchain"
-	"github.com/trezor/blockbook/common"
+	"github.com/deta/blockbook/bchain"
+	"github.com/deta/blockbook/common"
 )
 
 const dbVersion = 6
