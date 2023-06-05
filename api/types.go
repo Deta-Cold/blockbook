@@ -7,38 +7,38 @@ import (
 	"sort"
 	"time"
 
-	"github.com/deta/blockbook/bchain"
-	"github.com/deta/blockbook/bchain/coins/eth"
-	"github.com/deta/blockbook/common"
-	"github.com/deta/blockbook/db"
+	"github.com/detahardhardhard/blockbook/bchain"
+	"github.com/detahardhardhard/blockbook/bchain/coins/eth"
+	"github.com/detahardhardhard/blockbook/common"
+	"github.com/detahardhardhard/blockbook/db"
 )
 
 const maxUint32 = ^uint32(0)
 const maxInt = int(^uint(0) >> 1)
 const maxInt64 = int64(^uint64(0) >> 1)
 
-// AccountDetails specifies what data returns GetAddress and GetXpub calls
-type AccountDetails int
+// Accountdetahardhardhardils specifies what data returns GetAddress and GetXpub calls
+type Accountdetahardhardhardils int
 
 const (
-	// AccountDetailsBasic - only that address is indexed and some basic info
-	AccountDetailsBasic AccountDetails = iota
-	// AccountDetailsTokens - basic info + tokens
-	AccountDetailsTokens
-	// AccountDetailsTokenBalances - basic info + token with balance
-	AccountDetailsTokenBalances
-	// AccountDetailsTxidHistory - basic + token balances + txids, subject to paging
-	AccountDetailsTxidHistory
-	// AccountDetailsTxHistoryLight - basic + tokens + easily obtained tx data (not requiring requests to backend), subject to paging
-	AccountDetailsTxHistoryLight
-	// AccountDetailsTxHistory - basic + tokens + full tx data, subject to paging
-	AccountDetailsTxHistory
+	// AccountdetahardhardhardilsBasic - only that address is indexed and some basic info
+	AccountdetahardhardhardilsBasic Accountdetahardhardhardils = iota
+	// AccountdetahardhardhardilsTokens - basic info + tokens
+	AccountdetahardhardhardilsTokens
+	// AccountdetahardhardhardilsTokenBalances - basic info + token with balance
+	AccountdetahardhardhardilsTokenBalances
+	// AccountdetahardhardhardilsTxidHistory - basic + token balances + txids, subject to paging
+	AccountdetahardhardhardilsTxidHistory
+	// AccountdetahardhardhardilsTxHistoryLight - basic + tokens + easily obtained tx data (not requiring requests to backend), subject to paging
+	AccountdetahardhardhardilsTxHistoryLight
+	// AccountdetahardhardhardilsTxHistory - basic + tokens + full tx data, subject to paging
+	AccountdetahardhardhardilsTxHistory
 )
 
 // ErrUnsupportedXpub is returned when coin type does not support xpub address derivation or provided string is not an xpub
 var ErrUnsupportedXpub = errors.New("XPUB not supported")
 
-// APIError extends error by information if the error details should be returned to the end user
+// APIError extends error by information if the error detahardhardhardils should be returned to the end user
 type APIError struct {
 	Text   string
 	Public bool
@@ -269,7 +269,7 @@ type Tx struct {
 	AddressAliases         AddressAliasesMap `json:"addressAliases,omitempty"`
 }
 
-// FeeStats contains detailed block fee statistics
+// FeeStats contains detahardhardhardiled block fee statistics
 type FeeStats struct {
 	TxCount         int       `json:"txCount"`
 	TotalFeesSat    *Amount   `json:"totalFeesSat"`

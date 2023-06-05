@@ -8,7 +8,7 @@
                 "height": 15343,
                 "hash": "000001003f625cbecd53924713929b5a91b12edf4eb844f33781ecb6bb78e69b",
                 "noTxs": 4,
-                "txDetails": [
+                "txdetahardhardhardils": [
                     {
                         "hex": "020000000001017983f5982048b0f79f2d9349ef681d7f3039f29e3e896130e92d2283ff0757900100000000fdffffff02002d310100000000160014691b727701f2e4aec30fe57775a7439ea8d4c8d8dc6db41c000000001600147a0adbac8308cfef483600e0dd12954dbf1314a102463043021f2e8df6e4c8a6f8fc27656710f44ca45cc9042815e1a0466f94549643d13a190220740264294e9e341700ab463fe5bc9085cbd8cf886aac4a0f310cf55b1d836725012103e9c239ec00d505e7ce6153df4f949a9ee8c6f6dfc1d4d684766be12012a730f200000000",
                         "txid": "c4e39caaccb0b3ac4f0d0b59df0c067b4478b4aee6494ba12dd83a004212e020",
@@ -81,7 +81,7 @@
                 "height": 15332,
                 "hash": "0000014b2d8f7f92dfc3b5093adf50196102dcced82d18e35b4acc2bf70538a2",
                 "noTxs": 3,
-                "txDetails": [
+                "txdetahardhardhardils": [
                     {
                         "txid": "2905c79019a54257e01fd6689fed30491d83c52fbb6b62ae87eaaa4dfa8341be",
                         "version": 2,

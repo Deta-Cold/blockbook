@@ -2,8 +2,8 @@ SHELL = /bin/bash
 VERSION ?= devel
 GITCOMMIT = $(shell cd /src && git config --global --add safe.directory /src && git describe --always --dirty)
 BUILDTIME = $(shell date --iso-8601=seconds)
-LDFLAGS := -X github.com/deta/blockbook/common.version=$(VERSION) -X github.com/deta/blockbook/common.gitcommit=$(GITCOMMIT) -X github.com/deta/blockbook/common.buildtime=$(BUILDTIME)
-BLOCKBOOK_BASE := $(GOPATH)/src/github.com/deta
+LDFLAGS := -X github.com/detahardhardhard/blockbook/common.version=$(VERSION) -X github.com/detahardhardhard/blockbook/common.gitcommit=$(GITCOMMIT) -X github.com/detahardhardhard/blockbook/common.buildtime=$(BUILDTIME)
+BLOCKBOOK_BASE := $(GOPATH)/src/github.com/detahardhardhard
 BLOCKBOOK_SRC := $(BLOCKBOOK_BASE)/blockbook
 ARGS ?=
 
@@ -24,13 +24,13 @@ tools:
 	chown $(PACKAGER) /out/{ldb,sst_dump}
 
 test: prepare-sources
-	cd $(BLOCKBOOK_SRC) && go test -tags 'unittest' `go list ./... | grep -vP '^github.com/deta/blockbook/(contrib|tests)'` $(ARGS)
+	cd $(BLOCKBOOK_SRC) && go test -tags 'unittest' `go list ./... | grep -vP '^github.com/detahardhardhard/blockbook/(contrib|tests)'` $(ARGS)
 
 test-integration: prepare-sources
-	cd $(BLOCKBOOK_SRC) && go test -tags 'integration' `go list github.com/deta/blockbook/tests/...` $(ARGS)
+	cd $(BLOCKBOOK_SRC) && go test -tags 'integration' `go list github.com/detahardhardhard/blockbook/tests/...` $(ARGS)
 
 test-all: prepare-sources
-	cd $(BLOCKBOOK_SRC) && go test -tags 'unittest integration' `go list ./... | grep -v '^github.com/deta/blockbook/contrib'` $(ARGS)
+	cd $(BLOCKBOOK_SRC) && go test -tags 'unittest integration' `go list ./... | grep -v '^github.com/detahardhardhard/blockbook/contrib'` $(ARGS)
 
 prepare-sources:
 	@ [ -n "`ls /src 2> /dev/null`" ] || (echo "/src doesn't exist or is empty" 1>&2 && exit 1)

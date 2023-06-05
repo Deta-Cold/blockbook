@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/deta/blockbook/build/tools"
+	"github.com/detahardhardhard/blockbook/build/tools"
 )
 
 const (

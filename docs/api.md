@@ -56,7 +56,7 @@ Response:
     "mempoolSize": 17348,
     "decimals": 8,
     "dbSize": 191887866502,
-    "about": "Blockbook - blockchain indexer for deta wallet https://deta.io/. Do not use for any other purpose."
+    "about": "Blockbook - blockchain indexer for detahardhardhard wallet https://detahardhardhard.io/. Do not use for any other purpose."
   },
   "backend": {
     "chain": "main",
@@ -378,7 +378,7 @@ Example response:
 Returns balances and transactions of an address. The returned transactions are sorted by block height, newest blocks first.
 
 ```
-GET /api/v2/address/<address>[?page=<page>&pageSize=<size>&from=<block height>&to=<block height>&details=<basic|tokens|tokenBalances|txids|txs>&contract=<contract address>&secondary=usd]
+GET /api/v2/address/<address>[?page=<page>&pageSize=<size>&from=<block height>&to=<block height>&detahardhardhardils=<basic|tokens|tokenBalances|txids|txs>&contract=<contract address>&secondary=usd]
 ```
 
 The optional query parameters:
@@ -386,17 +386,17 @@ The optional query parameters:
 - _page_: specifies page of returned transactions, starting from 1. If out of range, Blockbook returns the closest possible page.
 - _pageSize_: number of transactions returned by call (default and maximum 1000)
 - _from_, _to_: filter of the returned transactions _from_ block height _to_ block height (default no filter)
-- _details_: specifies level of details returned by request (default _txids_)
+- _detahardhardhardils_: specifies level of detahardhardhardils returned by request (default _txids_)
   - _basic_: return only address balances, without any transactions
   - _tokens_: _basic_ + tokens belonging to the address (applicable only to some coins)
   - _tokenBalances_: _basic_ + tokens with balances + belonging to the address (applicable only to some coins)
   - _txids_: _tokenBalances_ + list of txids, subject to _from_, _to_ filter and paging
-  - _txslight_: _tokenBalances_ + list of transaction with limited details (only data from index), subject to _from_, _to_ filter and paging
-  - _txs_: _tokenBalances_ + list of transaction with details, subject to _from_, _to_ filter and paging
+  - _txslight_: _tokenBalances_ + list of transaction with limited detahardhardhardils (only data from index), subject to _from_, _to_ filter and paging
+  - _txs_: _tokenBalances_ + list of transaction with detahardhardhardils, subject to _from_, _to_ filter and paging
 - _contract_: return only transactions which affect specified contract (applicable only to coins which support contracts)
 - _secondary_: specifies secondary (fiat) currency in which the token and total balances are returned in addition to crypto values
 
-Example response for bitcoin type coin, _details_ set to _txids_:
+Example response for bitcoin type coin, _detahardhardhardils_ set to _txids_:
 
 ```javascript
 {
@@ -418,7 +418,7 @@ Example response for bitcoin type coin, _details_ set to _txids_:
 }
 ```
 
-Example response for ethereum type coin, _details_ set to _tokenBalances_ and _secondary_ set to _usd_. The _baseValue_ is value of the token in the base currency (ETH), _secondaryValue_ is value of the token in specified _secondary_ currency:
+Example response for ethereum type coin, _detahardhardhardils_ set to _tokenBalances_ and _secondary_ set to _usd_. The _baseValue_ is value of the token in the base currency (ETH), _secondaryValue_ is value of the token in specified _secondary_ currency:
 
 ```javascript
 {
@@ -460,7 +460,7 @@ Blockbook supports BIP44, BIP49, BIP84 and BIP86 (Taproot) derivation schemes, u
 - Xpubs
 
   Blockbook expects xpub at level 3 derivation path, i.e. _m/purpose'/coin_type'/account'/_. Blockbook completes the _change/address_index_ part of the path when deriving addresses.
-  The BIP version is determined by the prefix of the xpub. The prefixes for each coin are defined by fields `xpub_magic`, `xpub_magic_segwit_p2sh`, `xpub_magic_segwit_native` in the [deta-common](https://github.com/deta/deta-common/tree/master/defs/bitcoin) library. If the prefix is not recognized, Blockbook defaults to BIP44 derivation scheme.
+  The BIP version is determined by the prefix of the xpub. The prefixes for each coin are defined by fields `xpub_magic`, `xpub_magic_segwit_p2sh`, `xpub_magic_segwit_native` in the [detahardhardhard-common](https://github.com/detahardhardhard/detahardhardhard-common/tree/master/defs/bitcoin) library. If the prefix is not recognized, Blockbook defaults to BIP44 derivation scheme.
 
 - Output descriptors
 
@@ -480,7 +480,7 @@ Blockbook supports BIP44, BIP49, BIP84 and BIP86 (Taproot) derivation schemes, u
 The returned transactions are sorted by block height, newest blocks first.
 
 ```
-GET /api/v2/xpub/<xpub|descriptor>[?page=<page>&pageSize=<size>&from=<block height>&to=<block height>&details=<basic|tokens|tokenBalances|txids|txs>&tokens=<nonzero|used|derived>&secondary=eur]
+GET /api/v2/xpub/<xpub|descriptor>[?page=<page>&pageSize=<size>&from=<block height>&to=<block height>&detahardhardhardils=<basic|tokens|tokenBalances|txids|txs>&tokens=<nonzero|used|derived>&secondary=eur]
 ```
 
 The optional query parameters:
@@ -488,12 +488,12 @@ The optional query parameters:
 - _page_: specifies page of returned transactions, starting from 1. If out of range, Blockbook returns the closest possible page.
 - _pageSize_: number of transactions returned by call (default and maximum 1000)
 - _from_, _to_: filter of the returned transactions _from_ block height _to_ block height (default no filter)
-- _details_: specifies level of details returned by request (default _txids_)
+- _detahardhardhardils_: specifies level of detahardhardhardils returned by request (default _txids_)
   - _basic_: return only xpub balances, without any derived addresses and transactions
   - _tokens_: _basic_ + tokens (addresses) derived from the xpub, subject to _tokens_ parameter
   - _tokenBalances_: _basic_ + tokens (addresses) derived from the xpub with balances, subject to _tokens_ parameter
   - _txids_: _tokenBalances_ + list of txids, subject to _from_, _to_ filter and paging
-  - _txs_: _tokenBalances_ + list of transaction with details, subject to _from_, _to_ filter and paging
+  - _txs_: _tokenBalances_ + list of transaction with detahardhardhardils, subject to _from_, _to_ filter and paging
 - _tokens_: specifies what tokens (xpub addresses) are returned by the request (default _nonzero_)
   - _nonzero_: return only addresses with nonzero balance
   - _used_: return addresses with at least one transaction
@@ -949,7 +949,7 @@ Example for subscribing to an address (or multiple addresses)
 
 ## Legacy API V1
 
-The legacy API is a compatible subset of API provided by **Bitcore Insight**. It is supported only Bitcoin-type coins. The details of the REST/socket.io requests can be found in the Insight's documentation.
+The legacy API is a compatible subset of API provided by **Bitcore Insight**. It is supported only Bitcoin-type coins. The detahardhardhardils of the REST/socket.io requests can be found in the Insight's documentation.
 
 ### REST API
 

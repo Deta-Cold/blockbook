@@ -10,9 +10,9 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/deta/blockbook/bchain"
-	"github.com/deta/blockbook/common"
-	"github.com/deta/blockbook/db"
+	"github.com/detahardhardhard/blockbook/bchain"
+	"github.com/detahardhardhard/blockbook/common"
+	"github.com/detahardhardhard/blockbook/db"
 )
 
 var testMap = map[string]func(t *testing.T, th *TestHandler){
@@ -52,7 +52,7 @@ type BlockID struct {
 type BlockInfo struct {
 	BlockID
 	NoTxs     uint32       `json:"noTxs"`
-	TxDetails []*bchain.Tx `json:"txDetails"`
+	Txdetahardhardhardils []*bchain.Tx `json:"txdetahardhardhardils"`
 }
 
 func IntegrationTest(t *testing.T, coin string, chain bchain.BlockChain, mempool bchain.Mempool, testConfig json.RawMessage) {
@@ -103,7 +103,7 @@ func loadTestData(coin string, parser bchain.BlockChainParser) (*TestData, error
 	}
 
 	for _, b := range v.ConnectBlocks.Blocks {
-		for _, tx := range b.TxDetails {
+		for _, tx := range b.Txdetahardhardhardils {
 			// convert amounts in test json to bit.Int and clear the temporary JsonValue
 			for i := range tx.Vout {
 				vout := &tx.Vout[i]

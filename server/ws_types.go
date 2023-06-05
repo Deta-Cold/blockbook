@@ -15,7 +15,7 @@ type WsRes struct {
 
 type WsAccountInfoReq struct {
 	Descriptor        string `json:"descriptor"`
-	Details           string `json:"details,omitempty" ts_type:"'basic' | 'tokens' | 'tokenBalances' | 'txids' | 'txslight' | 'txs'"`
+	detahardhardhardils           string `json:"detahardhardhardils,omitempty" ts_type:"'basic' | 'tokens' | 'tokenBalances' | 'txids' | 'txslight' | 'txs'"`
 	Tokens            string `json:"tokens,omitempty" ts_type:"'derived' | 'used' | 'nonzero'"`
 	PageSize          int    `json:"pageSize,omitempty"`
 	Page              int    `json:"page,omitempty"`

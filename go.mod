@@ -1,4 +1,4 @@
-module github.com/deta/blockbook
+module github.com/detahardhardhard/blockbook
 
 go 1.19
 

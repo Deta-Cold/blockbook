@@ -14,11 +14,11 @@ import (
 	"github.com/golang/glog"
 	"github.com/gorilla/websocket"
 	"github.com/juju/errors"
-	"github.com/deta/blockbook/api"
-	"github.com/deta/blockbook/bchain"
-	"github.com/deta/blockbook/common"
-	"github.com/deta/blockbook/db"
-	"github.com/deta/blockbook/fiat"
+	"github.com/detahardhardhard/blockbook/api"
+	"github.com/detahardhardhard/blockbook/bchain"
+	"github.com/detahardhardhard/blockbook/common"
+	"github.com/detahardhardhard/blockbook/db"
+	"github.com/detahardhardhard/blockbook/fiat"
 )
 
 const upgradeFailed = "Upgrade failed: "
@@ -470,20 +470,20 @@ func unmarshalGetAccountInfoRequest(params []byte) (*WsAccountInfoReq, error) {
 }
 
 func (s *WebsocketServer) getAccountInfo(req *WsAccountInfoReq) (res *api.Address, err error) {
-	var opt api.AccountDetails
-	switch req.Details {
+	var opt api.Accountdetahardhardhardils
+	switch req.detahardhardhardils {
 	case "tokens":
-		opt = api.AccountDetailsTokens
+		opt = api.AccountdetahardhardhardilsTokens
 	case "tokenBalances":
-		opt = api.AccountDetailsTokenBalances
+		opt = api.AccountdetahardhardhardilsTokenBalances
 	case "txids":
-		opt = api.AccountDetailsTxidHistory
+		opt = api.AccountdetahardhardhardilsTxidHistory
 	case "txslight":
-		opt = api.AccountDetailsTxHistoryLight
+		opt = api.AccountdetahardhardhardilsTxHistoryLight
 	case "txs":
-		opt = api.AccountDetailsTxHistory
+		opt = api.AccountdetahardhardhardilsTxHistory
 	default:
-		opt = api.AccountDetailsBasic
+		opt = api.AccountdetahardhardhardilsBasic
 	}
 	var tokensToReturn api.TokensToReturn
 	switch req.Tokens {

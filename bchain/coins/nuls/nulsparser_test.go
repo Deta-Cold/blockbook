@@ -10,9 +10,9 @@ import (
 
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/martinboehm/btcutil/hdkeychain"
-	"github.com/deta/blockbook/bchain"
-	"github.com/deta/blockbook/bchain/coins/btc"
-	"github.com/deta/blockbook/common"
+	"github.com/detahardhardhard/blockbook/bchain"
+	"github.com/detahardhardhard/blockbook/bchain/coins/btc"
+	"github.com/detahardhardhard/blockbook/common"
 )
 
 var (

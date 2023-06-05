@@ -14,8 +14,8 @@ import (
 	"testing"
 
 	"github.com/martinboehm/btcutil/chaincfg"
-	"github.com/deta/blockbook/bchain"
-	"github.com/deta/blockbook/bchain/coins/btc"
+	"github.com/detahardhardhard/blockbook/bchain"
+	"github.com/detahardhardhard/blockbook/bchain/coins/btc"
 )
 
 func TestMain(m *testing.M) {
@@ -24,7 +24,7 @@ func TestMain(m *testing.M) {
 	os.Exit(c)
 }
 
-// Test getting the address details from the address hash
+// Test getting the address detahardhardhardils from the address hash
 
 func Test_GetAddrDescFromAddress_Mainnet(t *testing.T) {
 	type args struct {

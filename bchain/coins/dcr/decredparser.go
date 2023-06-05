@@ -19,9 +19,9 @@ import (
 	"github.com/martinboehm/btcd/wire"
 	"github.com/martinboehm/btcutil/base58"
 	"github.com/martinboehm/btcutil/chaincfg"
-	"github.com/deta/blockbook/bchain"
-	"github.com/deta/blockbook/bchain/coins/btc"
-	"github.com/deta/blockbook/bchain/coins/utils"
+	"github.com/detahardhardhard/blockbook/bchain"
+	"github.com/detahardhardhard/blockbook/bchain/coins/btc"
+	"github.com/detahardhardhard/blockbook/bchain/coins/utils"
 )
 
 const (
@@ -324,7 +324,7 @@ func (p *DecredParser) DeriveAddressDescriptorsFromTo(descriptor *bchain.XpubDes
 // DerivationBasePath returns base path of xpub which whose full format is
 // m/44'/<coin type>'/<account>'/<branch>/<address index>. This function only
 // returns a path up to m/44'/<coin type>'/<account>'/ whereby the rest of the
-// other details (<branch>/<address index>) are populated automatically.
+// other detahardhardhardils (<branch>/<address index>) are populated automatically.
 func (p *DecredParser) DerivationBasePath(descriptor *bchain.XpubDescriptor) (string, error) {
 	var c string
 	cn, depth, err := p.decodeXpub(descriptor.Xpub)

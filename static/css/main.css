@@ -335,7 +335,7 @@ span.btn-paging:hover {
     content: ",";
 }
 
-.deta-logo {
+.detahardhardhard-logo {
     width: 128px;
     height: 32px;
     position: absolute;
@@ -375,7 +375,7 @@ span.btn-paging:hover {
     font-weight: normal !important;
 }
 
-.tx-detail {
+.tx-detahardhardhardil {
     background: #f6f6f6;
     color: #757575;
     border-radius: 10px;
@@ -386,44 +386,44 @@ span.btn-paging:hover {
     overflow-wrap: break-word;
 }
 
-.tx-detail:first-child {
+.tx-detahardhardhardil:first-child {
     margin-top: 1rem;
 }
 
-.tx-detail:last-child {
+.tx-detahardhardhardil:last-child {
     margin-bottom: 2rem;
 }
 
-.tx-detail span.ellipsis,
-.tx-detail a.ellipsis {
+.tx-detahardhardhardil span.ellipsis,
+.tx-detahardhardhardil a.ellipsis {
     display: block;
     float: left;
     max-width: 100%;
 }
 
-.tx-detail>.head,
-.tx-detail>.footer {
+.tx-detahardhardhardil>.head,
+.tx-detahardhardhardil>.footer {
     padding: 1.5rem;
     --bs-gutter-x: 0;
 }
 
-.tx-detail>.head {
+.tx-detahardhardhardil>.head {
     border-radius: 10px 10px 0 0;
 }
 
-.tx-detail .txid {
+.tx-detahardhardhardil .txid {
     font-size: 106%;
     letter-spacing: -0.01em;
 }
 
-.tx-detail>.body {
+.tx-detahardhardhardil>.body {
     padding: 0 1.5rem;
     --bs-gutter-x: 0;
     letter-spacing: -0.01em;
 }
 
 
-.tx-detail>.subhead {
+.tx-detahardhardhardil>.subhead {
     padding: 1.5rem 1.5rem 0.4rem 1.5rem;
     --bs-gutter-x: 0;
     letter-spacing: 0.1em;
@@ -431,7 +431,7 @@ span.btn-paging:hover {
     color: var(--bs-body-color);
 }
 
-.tx-detail>.subhead-2 {
+.tx-detahardhardhardil>.subhead-2 {
     padding: 0.3rem 1.5rem 0 1.5rem;
     --bs-gutter-x: 0;
     font-size: .875em;
@@ -647,7 +647,7 @@ span.btn-paging:hover {
         right: initial;
     }
 
-    .deta-logo {
+    .detahardhardhard-logo {
         top: 10px;
     }
 

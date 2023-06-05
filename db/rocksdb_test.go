@@ -16,10 +16,10 @@ import (
 	vlq "github.com/bsm/go-vlq"
 	"github.com/juju/errors"
 	"github.com/martinboehm/btcutil/chaincfg"
-	"github.com/deta/blockbook/bchain"
-	"github.com/deta/blockbook/bchain/coins/btc"
-	"github.com/deta/blockbook/common"
-	"github.com/deta/blockbook/tests/dbtestdata"
+	"github.com/detahardhardhard/blockbook/bchain"
+	"github.com/detahardhardhard/blockbook/bchain/coins/btc"
+	"github.com/detahardhardhard/blockbook/common"
+	"github.com/detahardhardhard/blockbook/tests/dbtestdata"
 )
 
 // simplified explanation of signed varint packing, used in many index data structures
@@ -682,7 +682,7 @@ func TestRocksDB_Index_BitcoinType(t *testing.T) {
 	}
 
 	// test public methods for address balance and tx addresses
-	ab, err := d.GetAddressBalance(dbtestdata.Addr5, AddressBalanceDetailUTXO)
+	ab, err := d.GetAddressBalance(dbtestdata.Addr5, AddressBalancedetahardhardhardilUTXO)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1191,7 +1191,7 @@ func Test_packAddrBalance_unpackAddrBalance(t *testing.T) {
 			if !reflect.DeepEqual(hex, tt.hex) {
 				t.Errorf("packTxAddresses() = %v, want %v", hex, tt.hex)
 			}
-			got1, err := unpackAddrBalance(b, parser.PackedTxidLen(), AddressBalanceDetailUTXO)
+			got1, err := unpackAddrBalance(b, parser.PackedTxidLen(), AddressBalancedetahardhardhardilUTXO)
 			if err != nil {
 				t.Errorf("unpackTxAddresses() error = %v", err)
 				return

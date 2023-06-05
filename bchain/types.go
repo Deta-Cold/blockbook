@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/deta/blockbook/common"
+	"github.com/detahardhardhard/blockbook/common"
 )
 
 // ChainType is type of the blockchain

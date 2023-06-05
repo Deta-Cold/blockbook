@@ -19,9 +19,9 @@ import (
 	"github.com/decred/dcrd/dcrjson/v3"
 	"github.com/golang/glog"
 	"github.com/juju/errors"
-	"github.com/deta/blockbook/bchain"
-	"github.com/deta/blockbook/bchain/coins/btc"
-	"github.com/deta/blockbook/common"
+	"github.com/detahardhardhard/blockbook/bchain"
+	"github.com/detahardhardhard/blockbook/bchain/coins/btc"
+	"github.com/detahardhardhard/blockbook/common"
 )
 
 // voteBitYes defines the vote bit set when a given block validates the previous
@@ -391,7 +391,7 @@ func (d *DecredRPC) getChainBestBlock() (*GetBestBlockResult, error) {
 	return &bestBlockResult, nil
 }
 
-// getBestBlock returns details for the block mined immediately before the
+// getBestBlock returns detahardhardhardils for the block mined immediately before the
 // official dcrd chain's bestblock i.e. it has a minimum of 1 confirmation.
 // The chain's best block is not returned as its block validity is not guarranteed.
 func (d *DecredRPC) getBestBlock() (*GetBestBlockResult, error) {
@@ -497,7 +497,7 @@ func (d *DecredRPC) GetBlockHeader(hash string) (*bchain.BlockHeader, error) {
 // or using the block height if an empty hash string was provided. If the
 // requested block has less than 2 confirmation bchain.ErrBlockNotFound error
 // is returned. This rule is in places to guarrantee that only validated block
-// details (txs) are saved to the db. Access to the bestBlock height is threadsafe.
+// detahardhardhardils (txs) are saved to the db. Access to the bestBlock height is threadsafe.
 func (d *DecredRPC) GetBlock(hash string, height uint32) (*bchain.Block, error) {
 	// Confirm if the block at provided height has at least 2 confirming blocks.
 	d.mtx.Lock()
@@ -867,7 +867,7 @@ func safeDecodeResponse(body io.ReadCloser, res *interface{}) (err error) {
 }
 
 // mapToStandardErr map the dcrd API Message errors to the standard error messages
-// supported by deta. Dcrd errors to be mapped are listed here:
+// supported by detahardhardhard. Dcrd errors to be mapped are listed here:
 // https://github.com/decred/dcrd/blob/2f5e47371263b996bb99e8dc3484f659309bd83a/dcrjson/jsonerr.go
 func mapToStandardErr(customPrefix string, err Error) error {
 	switch {

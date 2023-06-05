@@ -169,17 +169,17 @@
             return socket.send({ method, params }, f);
         }
 
-        function getDetailedTransaction() {
-            var hash = document.getElementById('getDetailedTransactionHash').value.trim();
-            lookupDetailedTransaction(hash, function (result) {
-                console.log('getDetailedTransaction sent successfully');
+        function getdetahardhardhardiledTransaction() {
+            var hash = document.getElementById('getdetahardhardhardiledTransactionHash').value.trim();
+            lookupdetahardhardhardiledTransaction(hash, function (result) {
+                console.log('getdetahardhardhardiledTransaction sent successfully');
                 console.log(result);
-                document.getElementById('getDetailedTransactionResult').innerText = JSON.stringify(result).replace(/,/g, ", ");
+                document.getElementById('getdetahardhardhardiledTransactionResult').innerText = JSON.stringify(result).replace(/,/g, ", ");
             });
         }
 
-        function lookupDetailedTransaction(hash, f) {
-            const method = 'getDetailedTransaction';
+        function lookupdetahardhardhardiledTransaction(hash, f) {
+            const method = 'getdetahardhardhardiledTransaction';
             var params = [
                 hash,
             ];
@@ -352,15 +352,15 @@
         </div>
         <div class="row">
             <div class="col">
-                <input class="btn btn-secondary" type="button" value="getDetailedTransaction" onclick="getDetailedTransaction()">
+                <input class="btn btn-secondary" type="button" value="getdetahardhardhardiledTransaction" onclick="getdetahardhardhardiledTransaction()">
             </div>
             <div class="col-8">
-                <input type="text" class="form-control" id="getDetailedTransactionHash" value="474e6795760ebe81cb4023dc227e5a0efe340e1771c89a0035276361ed733de7">
+                <input type="text" class="form-control" id="getdetahardhardhardiledTransactionHash" value="474e6795760ebe81cb4023dc227e5a0efe340e1771c89a0035276361ed733de7">
             </div>
             <div class="col"></div>
         </div>
         <div class="row">
-            <div class="col" id="getDetailedTransactionResult">
+            <div class="col" id="getdetahardhardhardiledTransactionResult">
             </div>
         </div>
         <div class="row">

@@ -10,8 +10,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/deta/blockbook/bchain"
-	"github.com/deta/blockbook/db"
+	"github.com/detahardhardhard/blockbook/bchain"
+	"github.com/detahardhardhard/blockbook/db"
 )
 
 func testHandleFork(t *testing.T, h *TestHandler) {

@@ -1,7 +1,7 @@
 # Blockbook Contributor Guide
 
-Blockbook is a back-end service for the deta wallet. Although it is open source, the design and development of the core packages
-is done by the deta developers to keep Blockbook compatible with deta.
+Blockbook is a back-end service for the detahardhardhard wallet. Although it is open source, the design and development of the core packages
+is done by the detahardhardhard developers to keep Blockbook compatible with detahardhardhard.
 
 Bug fixes and support for new coins are welcome. **Please take note that pull requests that are not fixes and that change base
 packages or another coin code will not be accepted.** If you need a change in the existing core code, please file
@@ -16,16 +16,16 @@ Instructions to set up your development environment and build Blockbook are desc
 
 ### Reporting bugs
 
-A great way to contribute to the project is to send a detailed report when you encounter a problem. We always appreciate
+A great way to contribute to the project is to send a detahardhardhardiled report when you encounter a problem. We always appreciate
 a well-written and thorough bug report, and we'll be grateful for it!
 
-Check that [our issue database](https://github.com/deta/blockbook/issues) doesn't already include that problem or
+Check that [our issue database](https://github.com/detahardhardhard/blockbook/issues) doesn't already include that problem or
 suggestion before submitting an issue. If you find a match, you can use the "subscribe" button to get notified on
 updates. Do not leave random "+1" or "I have this too" comments, as they only clutter the discussion, and don't help
 resolving it. However, if you have ways to reproduce the issue or have additional information that may help resolving
 the issue, please leave a comment.
 
-Include information about the Blockbook instance, which is shown at the Blockbook status page or returned by API call. For example execute `curl -k https://<server name>:<public port>/api` to get JSON containing details about Blockbook and Backend installation.  Ports are listed in the [port registry](/docs/ports.md). 
+Include information about the Blockbook instance, which is shown at the Blockbook status page or returned by API call. For example execute `curl -k https://<server name>:<public port>/api` to get JSON containing detahardhardhardils about Blockbook and Backend installation.  Ports are listed in the [port registry](/docs/ports.md). 
 
 Also include the steps required to reproduce the problem if possible and applicable. This information will help us
 review and fix your issue faster. When sending lengthy log-files, consider posting them as a gist
@@ -37,7 +37,7 @@ review and fix your issue faster. When sending lengthy log-files, consider posti
 > on our infrastructure. We run Blockbook instances only for selected number of coins. If you want to have Blockbook
 > instance for your coin, you will have to deploy it to your own server.
 
-deta harware wallet supports over 500 coins, see https://deta.io/coins/. You are free to add support for any of
+detahardhardhard harware wallet supports over 500 coins, see https://detahardhardhard.io/coins/. You are free to add support for any of
 them to Blockbook. Currently implemented coins are listed [here](/docs/ports.md).
 
 You should follow the steps below to get smooth merge of your PR.
@@ -111,7 +111,7 @@ different concept than Bitcoin.
 Type that implements *bchain.BlockChain* interface ensures communication with the block chain network. Because
 it calls node RPCs, it usually has suffix RPC.
 
-Initialization of object is separated into two stages. At first there is called factory method (details described
+Initialization of object is separated into two stages. At first there is called factory method (detahardhardhardils described
 in the next section) and then *bchain.BlockChain.Initialize()* method. Separated initialization method allows you call
 inherited methods during initialization. However it is common practice override fields of embedded structure in factory
 method.

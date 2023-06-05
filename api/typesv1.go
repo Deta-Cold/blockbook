@@ -3,7 +3,7 @@ package api
 import (
 	"math/big"
 
-	"github.com/deta/blockbook/bchain"
+	"github.com/detahardhardhard/blockbook/bchain"
 )
 
 // ScriptSigV1 is used for legacy api v1

@@ -21,11 +21,11 @@ import (
 	"time"
 
 	"github.com/golang/glog"
-	"github.com/deta/blockbook/api"
-	"github.com/deta/blockbook/bchain"
-	"github.com/deta/blockbook/common"
-	"github.com/deta/blockbook/db"
-	"github.com/deta/blockbook/fiat"
+	"github.com/detahardhardhard/blockbook/api"
+	"github.com/detahardhardhard/blockbook/bchain"
+	"github.com/detahardhardhard/blockbook/common"
+	"github.com/detahardhardhard/blockbook/db"
+	"github.com/detahardhardhard/blockbook/fiat"
 )
 
 const txsOnPage = 25
@@ -156,7 +156,7 @@ func (s *PublicServer) ConnectFullPublicInterface() {
 		serveMux.HandleFunc(path+"sendtx", s.htmlTemplateHandler(s.explorerSendTx))
 		serveMux.HandleFunc(path+"mempool", s.htmlTemplateHandler(s.explorerMempool))
 		if s.chainParser.GetChainType() == bchain.ChainEthereumType {
-			serveMux.HandleFunc(path+"nft/", s.htmlTemplateHandler(s.explorerNftDetail))
+			serveMux.HandleFunc(path+"nft/", s.htmlTemplateHandler(s.explorerNftdetahardhardhardil))
 		}
 	} else {
 		// redirect to wallet requests for tx and address, possibly to external site
@@ -420,7 +420,7 @@ const (
 	blockTpl
 	sendTransactionTpl
 	mempoolTpl
-	nftDetailTpl
+	nftdetahardhardhardilTpl
 
 	publicTplCount
 )
@@ -538,16 +538,16 @@ func (s *PublicServer) parseTemplates() []*template.Template {
 	t[blocksTpl] = createTemplate("./static/templates/blocks.html", "./static/templates/paging.html", "./static/templates/base.html")
 	t[sendTransactionTpl] = createTemplate("./static/templates/sendtx.html", "./static/templates/base.html")
 	if s.chainParser.GetChainType() == bchain.ChainEthereumType {
-		t[txTpl] = createTemplate("./static/templates/tx.html", "./static/templates/txdetail_ethereumtype.html", "./static/templates/base.html")
-		t[addressTpl] = createTemplate("./static/templates/address.html", "./static/templates/txdetail_ethereumtype.html", "./static/templates/paging.html", "./static/templates/base.html")
-		t[blockTpl] = createTemplate("./static/templates/block.html", "./static/templates/txdetail_ethereumtype.html", "./static/templates/paging.html", "./static/templates/base.html")
-		t[nftDetailTpl] = createTemplate("./static/templates/tokenDetail.html", "./static/templates/base.html")
+		t[txTpl] = createTemplate("./static/templates/tx.html", "./static/templates/txdetahardhardhardil_ethereumtype.html", "./static/templates/base.html")
+		t[addressTpl] = createTemplate("./static/templates/address.html", "./static/templates/txdetahardhardhardil_ethereumtype.html", "./static/templates/paging.html", "./static/templates/base.html")
+		t[blockTpl] = createTemplate("./static/templates/block.html", "./static/templates/txdetahardhardhardil_ethereumtype.html", "./static/templates/paging.html", "./static/templates/base.html")
+		t[nftdetahardhardhardilTpl] = createTemplate("./static/templates/tokendetahardhardhardil.html", "./static/templates/base.html")
 	} else {
-		t[txTpl] = createTemplate("./static/templates/tx.html", "./static/templates/txdetail.html", "./static/templates/base.html")
-		t[addressTpl] = createTemplate("./static/templates/address.html", "./static/templates/txdetail.html", "./static/templates/paging.html", "./static/templates/base.html")
-		t[blockTpl] = createTemplate("./static/templates/block.html", "./static/templates/txdetail.html", "./static/templates/paging.html", "./static/templates/base.html")
+		t[txTpl] = createTemplate("./static/templates/tx.html", "./static/templates/txdetahardhardhardil.html", "./static/templates/base.html")
+		t[addressTpl] = createTemplate("./static/templates/address.html", "./static/templates/txdetahardhardhardil.html", "./static/templates/paging.html", "./static/templates/base.html")
+		t[blockTpl] = createTemplate("./static/templates/block.html", "./static/templates/txdetahardhardhardil.html", "./static/templates/paging.html", "./static/templates/base.html")
 	}
-	t[xpubTpl] = createTemplate("./static/templates/xpub.html", "./static/templates/txdetail.html", "./static/templates/paging.html", "./static/templates/base.html")
+	t[xpubTpl] = createTemplate("./static/templates/xpub.html", "./static/templates/txdetahardhardhardil.html", "./static/templates/paging.html", "./static/templates/base.html")
 	t[mempoolTpl] = createTemplate("./static/templates/mempool.html", "./static/templates/paging.html", "./static/templates/base.html")
 	return t
 }
@@ -766,7 +766,7 @@ func addressAliasSpan(a string, td *TemplateData) template.HTML {
 	return template.HTML(rv.String())
 }
 
-// called from template to support txdetail.html functionality
+// called from template to support txdetahardhardhardil.html functionality
 func setTxToTemplateData(td *TemplateData, tx *api.Tx) *TemplateData {
 	td.Tx = tx
 	// reset the TxTicker if different Blocktime
@@ -858,7 +858,7 @@ func (s *PublicServer) explorerSpendingTx(w http.ResponseWriter, r *http.Request
 	return errorTpl, nil, err
 }
 
-func (s *PublicServer) getAddressQueryParams(r *http.Request, accountDetails api.AccountDetails, maxPageSize int) (int, int, api.AccountDetails, *api.AddressFilter, string, int) {
+func (s *PublicServer) getAddressQueryParams(r *http.Request, accountdetahardhardhardils api.Accountdetahardhardhardils, maxPageSize int) (int, int, api.Accountdetahardhardhardils, *api.AddressFilter, string, int) {
 	var voutFilter = api.AddressFilterVoutOff
 	page, ec := strconv.Atoi(r.URL.Query().Get("page"))
 	if ec != nil {
@@ -889,19 +889,19 @@ func (s *PublicServer) getAddressQueryParams(r *http.Request, accountDetails api
 			}
 		}
 	}
-	switch r.URL.Query().Get("details") {
+	switch r.URL.Query().Get("detahardhardhardils") {
 	case "basic":
-		accountDetails = api.AccountDetailsBasic
+		accountdetahardhardhardils = api.AccountdetahardhardhardilsBasic
 	case "tokens":
-		accountDetails = api.AccountDetailsTokens
+		accountdetahardhardhardils = api.AccountdetahardhardhardilsTokens
 	case "tokenBalances":
-		accountDetails = api.AccountDetailsTokenBalances
+		accountdetahardhardhardils = api.AccountdetahardhardhardilsTokenBalances
 	case "txids":
-		accountDetails = api.AccountDetailsTxidHistory
+		accountdetahardhardhardils = api.AccountdetahardhardhardilsTxidHistory
 	case "txslight":
-		accountDetails = api.AccountDetailsTxHistoryLight
+		accountdetahardhardhardils = api.AccountdetahardhardhardilsTxHistoryLight
 	case "txs":
-		accountDetails = api.AccountDetailsTxHistory
+		accountdetahardhardhardils = api.AccountdetahardhardhardilsTxHistory
 	}
 	tokensToReturn := api.TokensToReturnNonzeroBalance
 	switch r.URL.Query().Get("tokens") {
@@ -917,7 +917,7 @@ func (s *PublicServer) getAddressQueryParams(r *http.Request, accountDetails api
 		gap = 0
 	}
 	contract := r.URL.Query().Get("contract")
-	return page, pageSize, accountDetails, &api.AddressFilter{
+	return page, pageSize, accountdetahardhardhardils, &api.AddressFilter{
 		Vout:           voutFilter,
 		TokensToReturn: tokensToReturn,
 		FromHeight:     uint32(from),
@@ -936,10 +936,10 @@ func (s *PublicServer) explorerAddress(w http.ResponseWriter, r *http.Request) (
 		return errorTpl, nil, api.NewAPIError("Missing address", true)
 	}
 	s.metrics.ExplorerViews.With(common.Labels{"action": "address"}).Inc()
-	page, _, _, filter, filterParam, _ := s.getAddressQueryParams(r, api.AccountDetailsTxHistoryLight, txsOnPage)
-	// do not allow details to be changed by query params
+	page, _, _, filter, filterParam, _ := s.getAddressQueryParams(r, api.AccountdetahardhardhardilsTxHistoryLight, txsOnPage)
+	// do not allow detahardhardhardils to be changed by query params
 	data := s.newTemplateData(r)
-	address, err := s.api.GetAddress(addressParam, page, txsOnPage, api.AccountDetailsTxHistoryLight, filter, strings.ToLower(data.SecondaryCoin))
+	address, err := s.api.GetAddress(addressParam, page, txsOnPage, api.AccountdetahardhardhardilsTxHistoryLight, filter, strings.ToLower(data.SecondaryCoin))
 	if err != nil {
 		return errorTpl, nil, err
 	}
@@ -957,7 +957,7 @@ func (s *PublicServer) explorerAddress(w http.ResponseWriter, r *http.Request) (
 	return addressTpl, data, nil
 }
 
-func (s *PublicServer) explorerNftDetail(w http.ResponseWriter, r *http.Request) (tpl, *TemplateData, error) {
+func (s *PublicServer) explorerNftdetahardhardhardil(w http.ResponseWriter, r *http.Request) (tpl, *TemplateData, error) {
 	parts := strings.Split(r.URL.Path, "/")
 	if len(parts) < 3 {
 		return errorTpl, nil, api.NewAPIError("Missing parameters", true)
@@ -965,7 +965,7 @@ func (s *PublicServer) explorerNftDetail(w http.ResponseWriter, r *http.Request)
 	tokenId := parts[len(parts)-1]
 	contract := parts[len(parts)-2]
 	uri, ci, err := s.api.GetEthereumTokenURI(contract, tokenId)
-	s.metrics.ExplorerViews.With(common.Labels{"action": "nftDetail"}).Inc()
+	s.metrics.ExplorerViews.With(common.Labels{"action": "nftdetahardhardhardil"}).Inc()
 	if err != nil {
 		return errorTpl, nil, api.NewAPIError(err.Error(), true)
 	}
@@ -976,7 +976,7 @@ func (s *PublicServer) explorerNftDetail(w http.ResponseWriter, r *http.Request)
 	data.TokenId = tokenId
 	data.ContractInfo = ci
 	data.URI = uri
-	return nftDetailTpl, data, nil
+	return nftdetahardhardhardilTpl, data, nil
 }
 
 func (s *PublicServer) explorerXpub(w http.ResponseWriter, r *http.Request) (tpl, *TemplateData, error) {
@@ -989,10 +989,10 @@ func (s *PublicServer) explorerXpub(w http.ResponseWriter, r *http.Request) (tpl
 		return errorTpl, nil, api.NewAPIError("Missing xpub", true)
 	}
 	s.metrics.ExplorerViews.With(common.Labels{"action": "xpub"}).Inc()
-	// do not allow txsOnPage and details to be changed by query params
-	page, _, _, filter, filterParam, gap := s.getAddressQueryParams(r, api.AccountDetailsTxHistoryLight, txsOnPage)
+	// do not allow txsOnPage and detahardhardhardils to be changed by query params
+	page, _, _, filter, filterParam, gap := s.getAddressQueryParams(r, api.AccountdetahardhardhardilsTxHistoryLight, txsOnPage)
 	data := s.newTemplateData(r)
-	address, err := s.api.GetXpubAddress(xpub, page, txsOnPage, api.AccountDetailsTxHistoryLight, filter, gap, strings.ToLower(data.SecondaryCoin))
+	address, err := s.api.GetXpubAddress(xpub, page, txsOnPage, api.AccountdetahardhardhardilsTxHistoryLight, filter, gap, strings.ToLower(data.SecondaryCoin))
 	if err != nil {
 		if err == api.ErrUnsupportedXpub {
 			err = api.NewAPIError("XPUB functionality is not supported", true)
@@ -1072,7 +1072,7 @@ func (s *PublicServer) explorerSearch(w http.ResponseWriter, r *http.Request) (t
 	var err error
 	s.metrics.ExplorerViews.With(common.Labels{"action": "search"}).Inc()
 	if len(q) > 0 {
-		address, err = s.api.GetXpubAddress(q, 0, 1, api.AccountDetailsBasic, &api.AddressFilter{Vout: api.AddressFilterVoutOff}, 0, "")
+		address, err = s.api.GetXpubAddress(q, 0, 1, api.AccountdetahardhardhardilsBasic, &api.AddressFilter{Vout: api.AddressFilterVoutOff}, 0, "")
 		if err == nil {
 			http.Redirect(w, r, joinURL("/xpub/", url.QueryEscape(address.AddrStr)), http.StatusFound)
 			return noTpl, nil, nil
@@ -1087,7 +1087,7 @@ func (s *PublicServer) explorerSearch(w http.ResponseWriter, r *http.Request) (t
 			http.Redirect(w, r, joinURL("/tx/", tx.Txid), http.StatusFound)
 			return noTpl, nil, nil
 		}
-		address, err = s.api.GetAddress(q, 0, 1, api.AccountDetailsBasic, &api.AddressFilter{Vout: api.AddressFilterVoutOff}, "")
+		address, err = s.api.GetAddress(q, 0, 1, api.AccountdetahardhardhardilsBasic, &api.AddressFilter{Vout: api.AddressFilterVoutOff}, "")
 		if err == nil {
 			http.Redirect(w, r, joinURL("/address/", address.AddrStr), http.StatusFound)
 			return noTpl, nil, nil
@@ -1284,9 +1284,9 @@ func (s *PublicServer) apiAddress(r *http.Request, apiVersion int) (interface{},
 	var address *api.Address
 	var err error
 	s.metrics.ExplorerViews.With(common.Labels{"action": "api-address"}).Inc()
-	page, pageSize, details, filter, _, _ := s.getAddressQueryParams(r, api.AccountDetailsTxidHistory, txsInAPI)
+	page, pageSize, detahardhardhardils, filter, _, _ := s.getAddressQueryParams(r, api.AccountdetahardhardhardilsTxidHistory, txsInAPI)
 	secondaryCoin := strings.ToLower(r.URL.Query().Get("secondary"))
-	address, err = s.api.GetAddress(addressParam, page, pageSize, details, filter, secondaryCoin)
+	address, err = s.api.GetAddress(addressParam, page, pageSize, detahardhardhardils, filter, secondaryCoin)
 	if err == nil && apiVersion == apiV1 {
 		return s.api.AddressToV1(address), nil
 	}
@@ -1305,9 +1305,9 @@ func (s *PublicServer) apiXpub(r *http.Request, apiVersion int) (interface{}, er
 	var address *api.Address
 	var err error
 	s.metrics.ExplorerViews.With(common.Labels{"action": "api-xpub"}).Inc()
-	page, pageSize, details, filter, _, gap := s.getAddressQueryParams(r, api.AccountDetailsTxidHistory, txsInAPI)
+	page, pageSize, detahardhardhardils, filter, _, gap := s.getAddressQueryParams(r, api.AccountdetahardhardhardilsTxidHistory, txsInAPI)
 	secondaryCoin := strings.ToLower(r.URL.Query().Get("secondary"))
-	address, err = s.api.GetXpubAddress(xpub, page, pageSize, details, filter, gap, secondaryCoin)
+	address, err = s.api.GetXpubAddress(xpub, page, pageSize, detahardhardhardils, filter, gap, secondaryCoin)
 	if err == nil && apiVersion == apiV1 {
 		return s.api.AddressToV1(address), nil
 	}

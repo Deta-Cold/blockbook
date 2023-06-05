@@ -18,8 +18,8 @@ import (
 	"github.com/golang/glog"
 	"github.com/juju/errors"
 	"github.com/linxGnu/grocksdb"
-	"github.com/deta/blockbook/bchain"
-	"github.com/deta/blockbook/common"
+	"github.com/detahardhardhard/blockbook/bchain"
+	"github.com/detahardhardhard/blockbook/common"
 )
 
 const dbVersion = 6
@@ -45,16 +45,16 @@ type connectBlockStats struct {
 	balancesMiss    int
 }
 
-// AddressBalanceDetail specifies what data are returned by GetAddressBalance
-type AddressBalanceDetail int
+// AddressBalancedetahardhardhardil specifies what data are returned by GetAddressBalance
+type AddressBalancedetahardhardhardil int
 
 const (
-	// AddressBalanceDetailNoUTXO returns address balance without utxos
-	AddressBalanceDetailNoUTXO = 0
-	// AddressBalanceDetailUTXO returns address balance with utxos
-	AddressBalanceDetailUTXO = 1
-	// addressBalanceDetailUTXOIndexed returns address balance with utxos and index for updates, used only internally
-	addressBalanceDetailUTXOIndexed = 2
+	// AddressBalancedetahardhardhardilNoUTXO returns address balance without utxos
+	AddressBalancedetahardhardhardilNoUTXO = 0
+	// AddressBalancedetahardhardhardilUTXO returns address balance with utxos
+	AddressBalancedetahardhardhardilUTXO = 1
+	// addressBalancedetahardhardhardilUTXOIndexed returns address balance with utxos and index for updates, used only internally
+	addressBalancedetahardhardhardilUTXOIndexed = 2
 )
 
 // RocksDB handle
@@ -633,7 +633,7 @@ func (d *RocksDB) processAddressesBitcoinType(block *bchain.Block, addresses add
 				strAddrDesc := string(addrDesc)
 				balance, e := balances[strAddrDesc]
 				if !e {
-					balance, err = d.GetAddrDescBalance(addrDesc, addressBalanceDetailUTXOIndexed)
+					balance, err = d.GetAddrDescBalance(addrDesc, addressBalancedetahardhardhardilUTXOIndexed)
 					if err != nil {
 						return err
 					}
@@ -724,7 +724,7 @@ func (d *RocksDB) processAddressesBitcoinType(block *bchain.Block, addresses add
 				strAddrDesc := string(spentOutput.AddrDesc)
 				balance, e := balances[strAddrDesc]
 				if !e {
-					balance, err = d.GetAddrDescBalance(spentOutput.AddrDesc, addressBalanceDetailUTXOIndexed)
+					balance, err = d.GetAddrDescBalance(spentOutput.AddrDesc, addressBalancedetahardhardhardilUTXOIndexed)
 					if err != nil {
 						return err
 					}
@@ -917,7 +917,7 @@ func (d *RocksDB) getBlockTxs(height uint32) ([]blockTxs, error) {
 }
 
 // GetAddrDescBalance returns AddrBalance for given addrDesc
-func (d *RocksDB) GetAddrDescBalance(addrDesc bchain.AddressDescriptor, detail AddressBalanceDetail) (*AddrBalance, error) {
+func (d *RocksDB) GetAddrDescBalance(addrDesc bchain.AddressDescriptor, detahardhardhardil AddressBalancedetahardhardhardil) (*AddrBalance, error) {
 	val, err := d.db.GetCF(d.ro, d.cfh[cfAddressBalance], addrDesc)
 	if err != nil {
 		return nil, err
@@ -928,16 +928,16 @@ func (d *RocksDB) GetAddrDescBalance(addrDesc bchain.AddressDescriptor, detail A
 	if len(buf) < 3 {
 		return nil, nil
 	}
-	return unpackAddrBalance(buf, d.chainParser.PackedTxidLen(), detail)
+	return unpackAddrBalance(buf, d.chainParser.PackedTxidLen(), detahardhardhardil)
 }
 
 // GetAddressBalance returns address balance for an address or nil if address not found
-func (d *RocksDB) GetAddressBalance(address string, detail AddressBalanceDetail) (*AddrBalance, error) {
+func (d *RocksDB) GetAddressBalance(address string, detahardhardhardil AddressBalancedetahardhardhardil) (*AddrBalance, error) {
 	addrDesc, err := d.chainParser.GetAddrDescFromAddress(address)
 	if err != nil {
 		return nil, err
 	}
-	return d.GetAddrDescBalance(addrDesc, detail)
+	return d.GetAddrDescBalance(addrDesc, detahardhardhardil)
 }
 
 func (d *RocksDB) getTxAddresses(btxID []byte) (*TxAddresses, error) {
@@ -1065,7 +1065,7 @@ func (d *RocksDB) appendTxOutput(txo *TxOutput, buf []byte, varBuf []byte) []byt
 	return buf
 }
 
-func unpackAddrBalance(buf []byte, txidUnpackedLen int, detail AddressBalanceDetail) (*AddrBalance, error) {
+func unpackAddrBalance(buf []byte, txidUnpackedLen int, detahardhardhardil AddressBalancedetahardhardhardil) (*AddrBalance, error) {
 	txs, l := unpackVaruint(buf)
 	sentSat, sl := unpackBigint(buf[l:])
 	balanceSat, bl := unpackBigint(buf[l+sl:])
@@ -1075,7 +1075,7 @@ func unpackAddrBalance(buf []byte, txidUnpackedLen int, detail AddressBalanceDet
 		SentSat:    sentSat,
 		BalanceSat: balanceSat,
 	}
-	if detail != AddressBalanceDetailNoUTXO {
+	if detahardhardhardil != AddressBalancedetahardhardhardilNoUTXO {
 		// estimate the size of utxos to avoid reallocation
 		ab.Utxos = make([]Utxo, 0, len(buf[l:])/txidUnpackedLen+3)
 		// ab.utxosMap = make(map[string]int, cap(ab.Utxos))
@@ -1094,7 +1094,7 @@ func unpackAddrBalance(buf []byte, txidUnpackedLen int, detail AddressBalanceDet
 				Height:   uint32(height),
 				ValueSat: valueSat,
 			}
-			if detail == AddressBalanceDetailUTXO {
+			if detahardhardhardil == AddressBalancedetahardhardhardilUTXO {
 				ab.Utxos = append(ab.Utxos, u)
 			} else {
 				ab.addUtxo(&u)
@@ -1563,7 +1563,7 @@ func (d *RocksDB) disconnectBlock(height uint32, blockTxs []blockTxs) error {
 		s := string(addrDesc)
 		b, fb := balances[s]
 		if !fb {
-			b, err = d.GetAddrDescBalance(addrDesc, addressBalanceDetailUTXOIndexed)
+			b, err = d.GetAddrDescBalance(addrDesc, addressBalancedetahardhardhardilUTXOIndexed)
 			if err != nil {
 				return nil, err
 			}
@@ -2162,7 +2162,7 @@ func (d *RocksDB) FixUtxos(stop chan os.Signal) error {
 				errorsCount++
 				continue
 			}
-			ba, err := unpackAddrBalance(buf, d.chainParser.PackedTxidLen(), AddressBalanceDetailUTXO)
+			ba, err := unpackAddrBalance(buf, d.chainParser.PackedTxidLen(), AddressBalancedetahardhardhardilUTXO)
 			if err != nil {
 				glog.Error("FixUtxos: row ", row, ", addrDesc ", addrDesc, ", unpackAddrBalance error ", err)
 				errorsCount++

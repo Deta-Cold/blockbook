@@ -2,7 +2,7 @@
 
 package sync
 
-import "github.com/deta/blockbook/bchain"
+import "github.com/detahardhardhard/blockbook/bchain"
 
 type fakeBlockChain struct {
 	bchain.BlockChain

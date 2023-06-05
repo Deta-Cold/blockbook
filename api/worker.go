@@ -15,11 +15,11 @@ import (
 
 	"github.com/golang/glog"
 	"github.com/juju/errors"
-	"github.com/deta/blockbook/bchain"
-	"github.com/deta/blockbook/bchain/coins/eth"
-	"github.com/deta/blockbook/common"
-	"github.com/deta/blockbook/db"
-	"github.com/deta/blockbook/fiat"
+	"github.com/detahardhardhard/blockbook/bchain"
+	"github.com/detahardhardhard/blockbook/bchain/coins/eth"
+	"github.com/detahardhardhard/blockbook/common"
+	"github.com/detahardhardhard/blockbook/db"
+	"github.com/detahardhardhard/blockbook/fiat"
 )
 
 // Worker is handle to api worker
@@ -918,7 +918,7 @@ func computePaging(count, page, itemsOnPage int) (Paging, int, int, int) {
 	}, from, to, page
 }
 
-func (w *Worker) getEthereumContractBalance(addrDesc bchain.AddressDescriptor, index int, c *db.AddrContract, details AccountDetails, ticker *common.CurrencyRatesTicker, secondaryCoin string) (*Token, error) {
+func (w *Worker) getEthereumContractBalance(addrDesc bchain.AddressDescriptor, index int, c *db.AddrContract, detahardhardhardils Accountdetahardhardhardils, ticker *common.CurrencyRatesTicker, secondaryCoin string) (*Token, error) {
 	typeName := bchain.EthereumTokenTypeMap[c.Type]
 	ci, validContract, err := w.getContractDescriptorInfo(c.Contract, typeName)
 	if err != nil {
@@ -933,8 +933,8 @@ func (w *Worker) getEthereumContractBalance(addrDesc bchain.AddressDescriptor, i
 		Decimals:      ci.Decimals,
 		ContractIndex: strconv.Itoa(index),
 	}
-	// return contract balances/values only at or above AccountDetailsTokenBalances
-	if details >= AccountDetailsTokenBalances && validContract {
+	// return contract balances/values only at or above AccountdetahardhardhardilsTokenBalances
+	if detahardhardhardils >= AccountdetahardhardhardilsTokenBalances && validContract {
 		if c.Type == bchain.FungibleToken {
 			// get Erc20 Contract Balance from blockchain, balance obtained from adding and subtracting transfers is not correct
 			b, err := w.chain.EthereumTypeGetErc20ContractBalance(addrDesc, c.Contract)
@@ -982,14 +982,14 @@ func (w *Worker) getEthereumContractBalance(addrDesc bchain.AddressDescriptor, i
 }
 
 // a fallback method in case internal transactions are not processed and there is no indexed info about contract balance for an address
-func (w *Worker) getEthereumContractBalanceFromBlockchain(addrDesc, contract bchain.AddressDescriptor, details AccountDetails) (*Token, error) {
+func (w *Worker) getEthereumContractBalanceFromBlockchain(addrDesc, contract bchain.AddressDescriptor, detahardhardhardils Accountdetahardhardhardils) (*Token, error) {
 	var b *big.Int
 	ci, validContract, err := w.getContractDescriptorInfo(contract, bchain.UnknownTokenType)
 	if err != nil {
 		return nil, errors.Annotatef(err, "GetContractInfo %v", contract)
 	}
 	// do not read contract balances etc in case of Basic option
-	if details >= AccountDetailsTokenBalances && validContract {
+	if detahardhardhardils >= AccountdetahardhardhardilsTokenBalances && validContract {
 		b, err = w.chain.EthereumTypeGetErc20ContractBalance(addrDesc, contract)
 		if err != nil {
 			// return nil, nil, nil, errors.Annotatef(err, "EthereumTypeGetErc20ContractBalance %v %v", addrDesc, c.Contract)
@@ -1047,7 +1047,7 @@ type ethereumTypeAddressData struct {
 	tokensSecondaryValue float64
 }
 
-func (w *Worker) getEthereumTypeAddressBalances(addrDesc bchain.AddressDescriptor, details AccountDetails, filter *AddressFilter, secondaryCoin string) (*db.AddrBalance, *ethereumTypeAddressData, error) {
+func (w *Worker) getEthereumTypeAddressBalances(addrDesc bchain.AddressDescriptor, detahardhardhardils Accountdetahardhardhardils, filter *AddressFilter, secondaryCoin string) (*db.AddrBalance, *ethereumTypeAddressData, error) {
 	var ba *db.AddrBalance
 	var n uint64
 	// unknown number of results for paging initially
@@ -1079,7 +1079,7 @@ func (w *Worker) getEthereumTypeAddressBalances(addrDesc bchain.AddressDescripto
 			return nil, nil, errors.Annotatef(err, "EthereumTypeGetNonce %v", addrDesc)
 		}
 		ticker := w.fiatRates.GetCurrentTicker("", "")
-		if details > AccountDetailsBasic {
+		if detahardhardhardils > AccountdetahardhardhardilsBasic {
 			d.tokens = make([]Token, len(ca.Contracts))
 			var j int
 			for i := range ca.Contracts {
@@ -1091,7 +1091,7 @@ func (w *Worker) getEthereumTypeAddressBalances(addrDesc bchain.AddressDescripto
 					// filter only transactions of this contract
 					filter.Vout = i + db.ContractIndexOffset
 				}
-				t, err := w.getEthereumContractBalance(addrDesc, i+db.ContractIndexOffset, c, details, ticker, secondaryCoin)
+				t, err := w.getEthereumContractBalance(addrDesc, i+db.ContractIndexOffset, c, detahardhardhardils, ticker, secondaryCoin)
 				if err != nil {
 					return nil, nil, err
 				}
@@ -1133,9 +1133,9 @@ func (w *Worker) getEthereumTypeAddressBalances(addrDesc bchain.AddressDescripto
 	}
 	// returns 0 for unknown address
 	d.nonce = strconv.Itoa(int(n))
-	// special handling if filtering for a contract, return the contract details even though the address had no transactions with it
-	if len(d.tokens) == 0 && len(filterDesc) > 0 && details >= AccountDetailsTokens {
-		t, err := w.getEthereumContractBalanceFromBlockchain(addrDesc, filterDesc, details)
+	// special handling if filtering for a contract, return the contract detahardhardhardils even though the address had no transactions with it
+	if len(d.tokens) == 0 && len(filterDesc) > 0 && detahardhardhardils >= AccountdetahardhardhardilsTokens {
+		t, err := w.getEthereumContractBalanceFromBlockchain(addrDesc, filterDesc, detahardhardhardils)
 		if err != nil {
 			return nil, nil, err
 		}
@@ -1147,11 +1147,11 @@ func (w *Worker) getEthereumTypeAddressBalances(addrDesc bchain.AddressDescripto
 	return ba, &d, nil
 }
 
-func (w *Worker) txFromTxid(txid string, bestHeight uint32, option AccountDetails, blockInfo *db.BlockInfo, addresses map[string]struct{}) (*Tx, error) {
+func (w *Worker) txFromTxid(txid string, bestHeight uint32, option Accountdetahardhardhardils, blockInfo *db.BlockInfo, addresses map[string]struct{}) (*Tx, error) {
 	var tx *Tx
 	var err error
 	// only ChainBitcoinType supports TxHistoryLight
-	if option == AccountDetailsTxHistoryLight && w.chainType == bchain.ChainBitcoinType {
+	if option == AccountdetahardhardhardilsTxHistoryLight && w.chainType == bchain.ChainBitcoinType {
 		ta, err := w.db.GetTxAddresses(txid)
 		if err != nil {
 			return nil, errors.Annotatef(err, "GetTxAddresses %v", txid)
@@ -1230,7 +1230,7 @@ func setIsOwnAddress(tx *Tx, address string) {
 }
 
 // GetAddress computes address value and gets transactions for given address
-func (w *Worker) GetAddress(address string, page int, txsOnPage int, option AccountDetails, filter *AddressFilter, secondaryCoin string) (*Address, error) {
+func (w *Worker) GetAddress(address string, page int, txsOnPage int, option Accountdetahardhardhardils, filter *AddressFilter, secondaryCoin string) (*Address, error) {
 	start := time.Now()
 	page--
 	if page < 0 {
@@ -1260,7 +1260,7 @@ func (w *Worker) GetAddress(address string, page int, txsOnPage int, option Acco
 		totalResults = ed.totalResults
 	} else {
 		// ba can be nil if the address is only in mempool!
-		ba, err = w.db.GetAddrDescBalance(addrDesc, db.AddressBalanceDetailNoUTXO)
+		ba, err = w.db.GetAddrDescBalance(addrDesc, db.AddressBalancedetahardhardhardilNoUTXO)
 		if err != nil {
 			return nil, NewAPIError(fmt.Sprintf("Address not found, %v", err), true)
 		}
@@ -1302,9 +1302,9 @@ func (w *Worker) GetAddress(address string, page int, txsOnPage int, option Acco
 						uBalSat.Sub(&uBalSat, tx.getAddrVinValue(addrDesc))
 					}
 					if page == 0 {
-						if option == AccountDetailsTxidHistory {
+						if option == AccountdetahardhardhardilsTxidHistory {
 							txids = append(txids, tx.Txid)
-						} else if option >= AccountDetailsTxHistoryLight {
+						} else if option >= AccountdetahardhardhardilsTxHistoryLight {
 							setIsOwnAddress(tx, address)
 							txs = append(txs, tx)
 						}
@@ -1314,7 +1314,7 @@ func (w *Worker) GetAddress(address string, page int, txsOnPage int, option Acco
 		}
 	}
 	// get tx history if requested by option or check mempool if there are some transactions for a new address
-	if option >= AccountDetailsTxidHistory && filter.Vout != AddressFilterVoutQueryNotNecessary {
+	if option >= AccountdetahardhardhardilsTxidHistory && filter.Vout != AddressFilterVoutQueryNotNecessary {
 		txc, err := w.getAddressTxids(addrDesc, false, filter, (page+1)*txsOnPage)
 		if err != nil {
 			return nil, errors.Annotatef(err, "getAddressTxids %v false", addrDesc)
@@ -1334,7 +1334,7 @@ func (w *Worker) GetAddress(address string, page int, txsOnPage int, option Acco
 		}
 		for i := from; i < to; i++ {
 			txid := txc[i]
-			if option == AccountDetailsTxidHistory {
+			if option == AccountdetahardhardhardilsTxidHistory {
 				txids = append(txids, txid)
 			} else {
 				tx, err := w.txFromTxid(txid, bestheight, option, nil, addresses)
@@ -1703,7 +1703,7 @@ func (w *Worker) getAddrDescUtxo(addrDesc bchain.AddressDescriptor, ba *db.AddrB
 	if !onlyMempool {
 		// get utxo from index
 		if ba == nil {
-			ba, err = w.db.GetAddrDescBalance(addrDesc, db.AddressBalanceDetailUTXO)
+			ba, err = w.db.GetAddrDescBalance(addrDesc, db.AddressBalancedetahardhardhardilUTXO)
 			if err != nil {
 				return nil, NewAPIError(fmt.Sprintf("Address not found, %v", err), true)
 			}
@@ -2034,7 +2034,7 @@ func (w *Worker) GetFeeStats(bid string) (*FeeStats, error) {
 	averageFeePerKb := int64(0)
 
 	for _, txid := range bi.Txids {
-		// Get a raw JSON with transaction details, including size, vsize, hex
+		// Get a raw JSON with transaction detahardhardhardils, including size, vsize, hex
 		txSpecificJSON, err := w.chain.GetTransactionSpecific(&bchain.Tx{Txid: txid})
 		if err != nil {
 			return nil, errors.Annotatef(err, "GetTransactionSpecific")
@@ -2146,7 +2146,7 @@ func (w *Worker) GetBlock(bid string, page int, txsOnPage int) (*Block, error) {
 	txi := 0
 	addresses := w.newAddressesMapForAliases()
 	for i := from; i < to; i++ {
-		txs[txi], err = w.txFromTxid(bi.Txids[i], bestheight, AccountDetailsTxHistoryLight, dbi, addresses)
+		txs[txi], err = w.txFromTxid(bi.Txids[i], bestheight, AccountdetahardhardhardilsTxHistoryLight, dbi, addresses)
 		if err != nil {
 			return nil, err
 		}
@@ -2235,7 +2235,7 @@ func (w *Worker) ComputeFeeStats(blockFrom, blockTo int, stopCompute chan os.Sig
 					glog.Info("ComputeFeeStats interrupted at height ", block)
 					return db.ErrOperationInterrupted
 				default:
-					tx, err := w.txFromTxid(txid, bestheight, AccountDetailsTxHistoryLight, dbi, nil)
+					tx, err := w.txFromTxid(txid, bestheight, AccountdetahardhardhardilsTxHistoryLight, dbi, nil)
 					if err != nil {
 						return err
 					}

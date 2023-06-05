@@ -4,7 +4,7 @@ import (
 	"encoding/hex"
 	"math/big"
 
-	"github.com/deta/blockbook/bchain"
+	"github.com/detahardhardhard/blockbook/bchain"
 )
 
 // Addresses

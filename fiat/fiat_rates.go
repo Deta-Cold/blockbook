@@ -10,8 +10,8 @@ import (
 	"time"
 
 	"github.com/golang/glog"
-	"github.com/deta/blockbook/common"
-	"github.com/deta/blockbook/db"
+	"github.com/detahardhardhard/blockbook/common"
+	"github.com/detahardhardhard/blockbook/db"
 )
 
 const currentTickersKey = "CurrentTickers"

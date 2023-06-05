@@ -10,8 +10,8 @@ import (
 
 	"github.com/golang/glog"
 	"github.com/juju/errors"
-	"github.com/deta/blockbook/bchain"
-	"github.com/deta/blockbook/db"
+	"github.com/detahardhardhard/blockbook/bchain"
+	"github.com/detahardhardhard/blockbook/db"
 )
 
 const defaultAddressesGap = 20
@@ -190,7 +190,7 @@ func (w *Worker) xpubCheckAndLoadTxids(ad *xpubAddress, filter *AddressFilter, m
 
 func (w *Worker) xpubDerivedAddressBalance(data *xpubData, ad *xpubAddress) (bool, error) {
 	var err error
-	if ad.balance, err = w.db.GetAddrDescBalance(ad.addrDesc, db.AddressBalanceDetailUTXO); err != nil {
+	if ad.balance, err = w.db.GetAddrDescBalance(ad.addrDesc, db.AddressBalancedetahardhardhardilUTXO); err != nil {
 		return false, err
 	}
 	if ad.balance != nil {
@@ -250,7 +250,7 @@ func (w *Worker) xpubScanAddresses(xd *bchain.XpubDescriptor, data *xpubData, ad
 	return lastUsed, addresses, nil
 }
 
-func (w *Worker) tokenFromXpubAddress(data *xpubData, ad *xpubAddress, changeIndex int, index int, option AccountDetails) Token {
+func (w *Worker) tokenFromXpubAddress(data *xpubData, ad *xpubAddress, changeIndex int, index int, option Accountdetahardhardhardils) Token {
 	a, _, _ := w.chainParser.GetAddressesFromAddrDesc(ad.addrDesc)
 	var address string
 	if len(a) > 0 {
@@ -260,7 +260,7 @@ func (w *Worker) tokenFromXpubAddress(data *xpubData, ad *xpubAddress, changeInd
 	var transfers int
 	if ad.balance != nil {
 		transfers = int(ad.balance.Txs)
-		if option >= AccountDetailsTokenBalances {
+		if option >= AccountdetahardhardhardilsTokenBalances {
 			balance = &ad.balance.BalanceSat
 			totalSent = &ad.balance.SentSat
 			totalReceived = ad.balance.ReceivedSat()
@@ -305,7 +305,7 @@ func setIsOwnAddresses(txs []*Tx, xpubAddresses map[string]struct{}) {
 	}
 }
 
-func (w *Worker) getXpubData(xd *bchain.XpubDescriptor, page int, txsOnPage int, option AccountDetails, filter *AddressFilter, gap int) (*xpubData, uint32, bool, error) {
+func (w *Worker) getXpubData(xd *bchain.XpubDescriptor, page int, txsOnPage int, option Accountdetahardhardhardils, filter *AddressFilter, gap int) (*xpubData, uint32, bool, error) {
 	if w.chainType != bchain.ChainBitcoinType {
 		return nil, 0, false, ErrUnsupportedXpub
 	}
@@ -370,7 +370,7 @@ func (w *Worker) getXpubData(xd *bchain.XpubDescriptor, page int, txsOnPage int,
 				}
 			}
 		}
-		if option >= AccountDetailsTxidHistory {
+		if option >= AccountdetahardhardhardilsTxidHistory {
 			for _, da := range data.addresses {
 				for i := range da {
 					if err = w.xpubCheckAndLoadTxids(&da[i], filter, bestheight, (page+1)*txsOnPage); err != nil {
@@ -388,7 +388,7 @@ func (w *Worker) getXpubData(xd *bchain.XpubDescriptor, page int, txsOnPage int,
 }
 
 // GetXpubAddress computes address value and gets transactions for given address
-func (w *Worker) GetXpubAddress(xpub string, page int, txsOnPage int, option AccountDetails, filter *AddressFilter, gap int, secondaryCoin string) (*Address, error) {
+func (w *Worker) GetXpubAddress(xpub string, page int, txsOnPage int, option Accountdetahardhardhardils, filter *AddressFilter, gap int, secondaryCoin string) (*Address, error) {
 	start := time.Now()
 	page--
 	if page < 0 {
@@ -480,14 +480,14 @@ func (w *Worker) GetXpubAddress(xpub string, page int, txsOnPage int, option Acc
 		// sort the entries by time descending
 		sort.Sort(mempoolEntries)
 		for _, entry := range mempoolEntries {
-			if option == AccountDetailsTxidHistory {
+			if option == AccountdetahardhardhardilsTxidHistory {
 				txids = append(txids, entry.Txid)
-			} else if option >= AccountDetailsTxHistoryLight {
+			} else if option >= AccountdetahardhardhardilsTxHistoryLight {
 				txs = append(txs, txmMap[entry.Txid])
 			}
 		}
 	}
-	if option >= AccountDetailsTxidHistory {
+	if option >= AccountdetahardhardhardilsTxidHistory {
 		txcMap := make(map[string]bool)
 		txc = make(xpubTxids, 0, 32)
 		for _, da := range data.addresses {
@@ -528,7 +528,7 @@ func (w *Worker) GetXpubAddress(xpub string, page int, txsOnPage int, option Acc
 		// get confirmed transactions
 		for i := from; i < to; i++ {
 			xpubTxid := &txc[i]
-			if option == AccountDetailsTxidHistory {
+			if option == AccountdetahardhardhardilsTxidHistory {
 				txids = append(txids, xpubTxid.txid)
 			} else {
 				tx, err := w.txFromTxid(xpubTxid.txid, bestheight, option, nil, addresses)
@@ -545,7 +545,7 @@ func (w *Worker) GetXpubAddress(xpub string, page int, txsOnPage int, option Acc
 	usedTokens := 0
 	var tokens []Token
 	var xpubAddresses map[string]struct{}
-	if option > AccountDetailsBasic {
+	if option > AccountdetahardhardhardilsBasic {
 		tokens = make([]Token, 0, 4)
 		xpubAddresses = make(map[string]struct{})
 	}
@@ -555,7 +555,7 @@ func (w *Worker) GetXpubAddress(xpub string, page int, txsOnPage int, option Acc
 			if ad.balance != nil {
 				usedTokens++
 			}
-			if option > AccountDetailsBasic {
+			if option > AccountdetahardhardhardilsBasic {
 				token := w.tokenFromXpubAddress(data, ad, ci, i, option)
 				if filter.TokensToReturn == TokensToReturnDerived ||
 					filter.TokensToReturn == TokensToReturnUsed && ad.balance != nil ||
@@ -612,7 +612,7 @@ func (w *Worker) GetXpubUtxo(xpub string, onlyConfirmed bool, gap int) (Utxos, e
 	if err != nil {
 		return nil, err
 	}
-	data, _, inCache, err := w.getXpubData(xd, 0, 1, AccountDetailsBasic, &AddressFilter{
+	data, _, inCache, err := w.getXpubData(xd, 0, 1, AccountdetahardhardhardilsBasic, &AddressFilter{
 		Vout:          AddressFilterVoutOff,
 		OnlyConfirmed: onlyConfirmed,
 	}, gap)
@@ -635,7 +635,7 @@ func (w *Worker) GetXpubUtxo(xpub string, onlyConfirmed bool, gap int) (Utxos, e
 				return nil, err
 			}
 			if len(utxos) > 0 {
-				t := w.tokenFromXpubAddress(data, ad, ci, i, AccountDetailsTokens)
+				t := w.tokenFromXpubAddress(data, ad, ci, i, AccountdetahardhardhardilsTokens)
 				for j := range utxos {
 					a := &utxos[j]
 					a.Address = t.Name
@@ -662,7 +662,7 @@ func (w *Worker) GetXpubBalanceHistory(xpub string, fromTimestamp, toTimestamp i
 	if err != nil {
 		return nil, err
 	}
-	data, _, inCache, err := w.getXpubData(xd, 0, 1, AccountDetailsTxidHistory, &AddressFilter{
+	data, _, inCache, err := w.getXpubData(xd, 0, 1, AccountdetahardhardhardilsTxidHistory, &AddressFilter{
 		Vout:          AddressFilterVoutOff,
 		OnlyConfirmed: true,
 		FromHeight:    fromHeight,

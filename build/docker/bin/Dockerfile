@@ -45,11 +45,11 @@ RUN strip /opt/rocksdb/ldb /opt/rocksdb/sst_dump && \
 
 # pre-load depencencies
 RUN \
-    cleanup() { rm -rf $GOPATH/src/github.com/deta ; } && \
+    cleanup() { rm -rf $GOPATH/src/github.com/detahardhardhard ; } && \
     trap cleanup EXIT && \
-    mkdir -p $GOPATH/src/github.com/deta && \
-    cd $GOPATH/src/github.com/deta && \
-    git clone https://github.com/deta/blockbook.git && \
+    mkdir -p $GOPATH/src/github.com/detahardhardhard && \
+    cd $GOPATH/src/github.com/detahardhardhard && \
+    git clone https://github.com/detahardhardhard/blockbook.git && \
     cd blockbook && \
     go mod download
 

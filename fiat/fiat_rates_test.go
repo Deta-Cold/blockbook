@@ -14,10 +14,10 @@ import (
 
 	"github.com/golang/glog"
 	"github.com/martinboehm/btcutil/chaincfg"
-	"github.com/deta/blockbook/bchain"
-	"github.com/deta/blockbook/bchain/coins/btc"
-	"github.com/deta/blockbook/common"
-	"github.com/deta/blockbook/db"
+	"github.com/detahardhardhard/blockbook/bchain"
+	"github.com/detahardhardhard/blockbook/bchain/coins/btc"
+	"github.com/detahardhardhard/blockbook/common"
+	"github.com/detahardhardhard/blockbook/db"
 )
 
 func TestMain(m *testing.M) {

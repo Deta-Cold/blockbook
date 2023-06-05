@@ -319,7 +319,7 @@ export interface WsRes {
 }
 export interface WsAccountInfoReq {
     descriptor: string;
-    details?: 'basic' | 'tokens' | 'tokenBalances' | 'txids' | 'txslight' | 'txs';
+    detahardhardhardils?: 'basic' | 'tokens' | 'tokenBalances' | 'txids' | 'txslight' | 'txs';
     tokens?: 'derived' | 'used' | 'nonzero';
     pageSize?: number;
     page?: number;

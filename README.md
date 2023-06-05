@@ -1,9 +1,9 @@
-[![Go Report Card](https://goreportcard.com/badge/deta/blockbook)](https://goreportcard.com/report/deta/blockbook)
+[![Go Report Card](https://goreportcard.com/badge/detahardhardhard/blockbook)](https://goreportcard.com/report/detahardhardhard/blockbook)
 
 # Blockbook
 
 <<<<<<< HEAD
-**Blockbook** is back-end service for deta wallet. Main features of **Blockbook** are:
+**Blockbook** is back-end service for detahardhardhard wallet. Main features of **Blockbook** are:
 =======
 **Blockbook** is back-end service for Delta wallet. Main features of **Blockbook** are:
 >>>>>>> edfbfa1efde2c9961732cdc29b39797d1e757354
@@ -23,7 +23,7 @@ Memory and disk requirements for initial synchronization of **Bitcoin mainnet** 
 Other coins should have lower requirements, depending on the size of their block chain. Note that fast SSD disks are highly
 recommended.
 
-User installation guide is [here](https://wiki.deta.io/User_manual:Running_a_local_instance_of_deta_Wallet_backend_(Blockbook)).
+User installation guide is [here](https://wiki.detahardhardhard.io/User_manual:Running_a_local_instance_of_detahardhardhard_Wallet_backend_(Blockbook)).
 
 Developer build guide is [here](/docs/build.md).
 
@@ -32,7 +32,7 @@ Contribution guide is [here](CONTRIBUTING.md).
 ## Implemented coins
 
 <<<<<<< HEAD
-Blockbook currently supports over 30 coins. The deta team implemented 
+Blockbook currently supports over 30 coins. The detahardhardhard team implemented 
 =======
 Blockbook currently supports over 30 coins. The Delta team implemented 
 >>>>>>> edfbfa1efde2c9961732cdc29b39797d1e757354
@@ -55,7 +55,7 @@ How to reduce memory footprint of the initial sync:
 - disable rocksdb cache by parameter `-dbcache=0`, the default size is 500MB
 - run blockbook with parameter `-workers=1`. This disables bulk import mode, which caches a lot of data in memory (not in rocksdb cache). It will run about twice as slowly but especially for smaller blockchains it is no problem at all.
 
-Please add your experience to this [issue](https://github.com/deta/blockbook/issues/43).
+Please add your experience to this [issue](https://github.com/detahardhardhard/blockbook/issues/43).
 
 #### Error `internalState: database is in inconsistent state and cannot be used`
 
@@ -64,15 +64,15 @@ By default, Blockbook performs the initial import in bulk import mode, which for
 
 See above how to reduce the memory footprint, delete the database files and run the import again. 
 
-Check [this](https://github.com/deta/blockbook/issues/89) or [this](https://github.com/deta/blockbook/issues/147) issue for more info.
+Check [this](https://github.com/detahardhardhard/blockbook/issues/89) or [this](https://github.com/detahardhardhard/blockbook/issues/147) issue for more info.
 
 #### Running on Ubuntu
 
-[This issue](https://github.com/deta/blockbook/issues/45) discusses how to run Blockbook on Ubuntu. If you have some additional experience with Blockbook on Ubuntu, please add it to [this issue](https://github.com/deta/blockbook/issues/45).
+[This issue](https://github.com/detahardhardhard/blockbook/issues/45) discusses how to run Blockbook on Ubuntu. If you have some additional experience with Blockbook on Ubuntu, please add it to [this issue](https://github.com/detahardhardhard/blockbook/issues/45).
 
 #### My coin implementation is reporting parse errors when importing blockchain
 
-Your coin's block/transaction data may not be compatible with `BitcoinParser` `ParseBlock`/`ParseTx`, which is used by default. In that case, implement your coin in a similar way we used in case of [zcash](https://github.com/deta/blockbook/tree/master/bchain/coins/zec) and some other coins. The principle is not to parse the block/transaction data in Blockbook but instead to get parsed transactions as json from the backend.
+Your coin's block/transaction data may not be compatible with `BitcoinParser` `ParseBlock`/`ParseTx`, which is used by default. In that case, implement your coin in a similar way we used in case of [zcash](https://github.com/detahardhardhard/blockbook/tree/master/bchain/coins/zec) and some other coins. The principle is not to parse the block/transaction data in Blockbook but instead to get parsed transactions as json from the backend.
 
 ## Data storage in RocksDB
 

@@ -291,14 +291,14 @@ func verifySendTransaction(t *testing.T, id int, lrs *logRequestResponse, bbResS
 	}
 }
 
-func verifyGetDetailedTransaction(t *testing.T, id int, lrs *logRequestResponse, bbResStr string, stat *verifyStats) {
-	bbResponse := resultGetDetailedTransaction{}
-	logResponse := resultGetDetailedTransaction{}
+func verifyGetdetahardhardhardiledTransaction(t *testing.T, id int, lrs *logRequestResponse, bbResStr string, stat *verifyStats) {
+	bbResponse := resultGetdetahardhardhardiledTransaction{}
+	logResponse := resultGetdetahardhardhardiledTransaction{}
 	if err := unmarshalResponses(t, id, lrs, bbResStr, &bbResponse, &logResponse); err != nil {
 		return
 	}
 	if err := equalTx(logResponse.Result, bbResponse.Result); err != nil {
-		t.Log("getDetailedTransaction", id, err)
+		t.Log("getdetahardhardhardiledTransaction", id, err)
 		return
 	}
 	stat.SuccessCount++
@@ -334,8 +334,8 @@ func verifyMessage(t *testing.T, ws *gosocketio.Client, id int, lrs *logRequestR
 		verifyGetAddressHistory(t, id, lrs, res, stat, ws, req)
 	case "getBlockHeader":
 		verifyGetBlockHeader(t, id, lrs, res, stat)
-	case "getDetailedTransaction":
-		verifyGetDetailedTransaction(t, id, lrs, res, stat)
+	case "getdetahardhardhardiledTransaction":
+		verifyGetdetahardhardhardiledTransaction(t, id, lrs, res, stat)
 	case "getInfo":
 		verifyGetInfo(t, id, lrs, res, stat)
 	case "estimateSmartFee":

@@ -152,8 +152,8 @@
 
         function getAccountInfo() {
             const descriptor = document.getElementById('getAccountInfoDescriptor').value.trim();
-            const selectDetails = document.getElementById('getAccountInfoDetails');
-            const details = selectDetails.options[selectDetails.selectedIndex].value;
+            const selectdetahardhardhardils = document.getElementById('getAccountInfodetahardhardhardils');
+            const detahardhardhardils = selectdetahardhardhardils.options[selectdetahardhardhardils.selectedIndex].value;
             const page = parseInt(document.getElementById("getAccountInfoPage").value);
             const from = parseInt(document.getElementById("getAccountInfoFrom").value);
             const to = parseInt(document.getElementById("getAccountInfoTo").value);
@@ -164,7 +164,7 @@
             const tokens = "derived"; // could be "nonzero", "used", default is "derived" i.e. all
             const params = {
                 descriptor,
-                details,
+                detahardhardhardils,
                 tokens,
                 page,
                 pageSize,
@@ -511,7 +511,7 @@
             <div class="col-8">
                 <div class="row" style="margin: 0;">
                     <input type="text" placeholder="descriptor" style="width: 79%" class="form-control" id="getAccountInfoDescriptor" value="0xba98d6a5ac827632e3457de7512d211e4ff7e8bd">
-                    <select id="getAccountInfoDetails" style="width: 20%; margin-left: 5px;">
+                    <select id="getAccountInfodetahardhardhardils" style="width: 20%; margin-left: 5px;">
                         <option value="basic">Basic</option>
                         <option value="tokens">Tokens</option>
                         <option value="tokenBalances">TokenBalances</option>

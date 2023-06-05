@@ -4,8 +4,8 @@ import (
 	"github.com/martinboehm/btcd/wire"
 	"github.com/martinboehm/btcutil/base58"
 	"github.com/martinboehm/btcutil/chaincfg"
-	"github.com/deta/blockbook/bchain"
-	"github.com/deta/blockbook/bchain/coins/btc"
+	"github.com/detahardhardhard/blockbook/bchain"
+	"github.com/detahardhardhard/blockbook/bchain/coins/btc"
 )
 
 // magic numbers

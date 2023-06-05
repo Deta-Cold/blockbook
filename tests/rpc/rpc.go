@@ -13,7 +13,7 @@ import (
 
 	mapset "github.com/deckarep/golang-set"
 	"github.com/juju/errors"
-	"github.com/deta/blockbook/bchain"
+	"github.com/detahardhardhard/blockbook/bchain"
 )
 
 var testMap = map[string]func(t *testing.T, th *TestHandler){
@@ -41,7 +41,7 @@ type TestData struct {
 	BlockTime   int64                 `json:"blockTime"`
 	BlockSize   int                   `json:"blockSize"`
 	BlockTxs    []string              `json:"blockTxs"`
-	TxDetails   map[string]*bchain.Tx `json:"txDetails"`
+	Txdetahardhardhardils   map[string]*bchain.Tx `json:"txdetahardhardhardils"`
 }
 
 func IntegrationTest(t *testing.T, coin string, chain bchain.BlockChain, mempool bchain.Mempool, testConfig json.RawMessage) {
@@ -95,7 +95,7 @@ func loadTestData(coin string, parser bchain.BlockChainParser) (*TestData, error
 	if err != nil {
 		return nil, err
 	}
-	for _, tx := range v.TxDetails {
+	for _, tx := range v.Txdetahardhardhardils {
 		// convert amounts in test json to bit.Int and clear the temporary JsonValue
 		for i := range tx.Vout {
 			vout := &tx.Vout[i]
@@ -163,7 +163,7 @@ func testGetBlock(t *testing.T, h *TestHandler) {
 }
 
 func testGetTransaction(t *testing.T, h *TestHandler) {
-	for txid, want := range h.TestData.TxDetails {
+	for txid, want := range h.TestData.Txdetahardhardhardils {
 		got, err := h.Chain.GetTransaction(txid)
 		if err != nil {
 			t.Error(err)
@@ -188,7 +188,7 @@ func testGetTransaction(t *testing.T, h *TestHandler) {
 }
 
 func testGetTransactionForMempool(t *testing.T, h *TestHandler) {
-	for txid, want := range h.TestData.TxDetails {
+	for txid, want := range h.TestData.Txdetahardhardhardils {
 		// reset fields that are not parsed by BlockChainParser
 		want.Confirmations, want.Blocktime, want.Time, want.CoinSpecificData = 0, 0, 0, nil
 

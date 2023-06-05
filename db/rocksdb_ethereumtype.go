@@ -12,8 +12,8 @@ import (
 	"github.com/golang/glog"
 	"github.com/juju/errors"
 	"github.com/linxGnu/grocksdb"
-	"github.com/deta/blockbook/bchain"
-	"github.com/deta/blockbook/bchain/coins/eth"
+	"github.com/detahardhardhard/blockbook/bchain"
+	"github.com/detahardhardhard/blockbook/bchain/coins/eth"
 )
 
 const InternalTxIndexOffset = 1

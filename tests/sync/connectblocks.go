@@ -9,8 +9,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/deta/blockbook/bchain"
-	"github.com/deta/blockbook/db"
+	"github.com/detahardhardhard/blockbook/bchain"
+	"github.com/detahardhardhard/blockbook/db"
 )
 
 func testConnectBlocks(t *testing.T, h *TestHandler) {
@@ -117,7 +117,7 @@ func verifyTransactions(t *testing.T, d *db.RocksDB, h *TestHandler, rng Range) 
 			continue
 		}
 
-		for _, tx := range block.TxDetails {
+		for _, tx := range block.Txdetahardhardhardils {
 			for _, vin := range tx.Vin {
 				for _, a := range vin.Addresses {
 					addr2txs[a] = append(addr2txs[a], txInfo{tx.Txid, ^int32(vin.Vout)})
@@ -167,7 +167,7 @@ func verifyAddresses(t *testing.T, d *db.RocksDB, h *TestHandler, rng Range) {
 			continue
 		}
 
-		for _, tx := range block.TxDetails {
+		for _, tx := range block.Txdetahardhardhardils {
 			ta, err := d.GetTxAddresses(tx.Txid)
 			if err != nil {
 				t.Fatal(err)

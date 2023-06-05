@@ -13,11 +13,11 @@ import (
 	"github.com/juju/errors"
 	gosocketio "github.com/martinboehm/golang-socketio"
 	"github.com/martinboehm/golang-socketio/transport"
-	"github.com/deta/blockbook/api"
-	"github.com/deta/blockbook/bchain"
-	"github.com/deta/blockbook/common"
-	"github.com/deta/blockbook/db"
-	"github.com/deta/blockbook/fiat"
+	"github.com/detahardhardhard/blockbook/api"
+	"github.com/detahardhardhard/blockbook/bchain"
+	"github.com/detahardhardhard/blockbook/common"
+	"github.com/detahardhardhard/blockbook/db"
+	"github.com/detahardhardhard/blockbook/fiat"
 )
 
 // SocketIoServer is handle to SocketIoServer
@@ -130,10 +130,10 @@ var onMessageHandlers = map[string]func(*SocketIoServer, json.RawMessage) (inter
 	"getInfo": func(s *SocketIoServer, params json.RawMessage) (rv interface{}, err error) {
 		return s.getInfo()
 	},
-	"getDetailedTransaction": func(s *SocketIoServer, params json.RawMessage) (rv interface{}, err error) {
-		txid, err := unmarshalGetDetailedTransaction(params)
+	"getdetahardhardhardiledTransaction": func(s *SocketIoServer, params json.RawMessage) (rv interface{}, err error) {
+		txid, err := unmarshalGetdetahardhardhardiledTransaction(params)
 		if err == nil {
-			rv, err = s.getDetailedTransaction(txid)
+			rv, err = s.getdetahardhardhardiledTransaction(txid)
 		}
 		return
 	},
@@ -484,7 +484,7 @@ type resultGetBlockHeader struct {
 
 func (s *SocketIoServer) getBlockHeader(height uint32, hash string) (res resultGetBlockHeader, err error) {
 	if hash == "" {
-		// deta is interested only in hash
+		// detahardhardhard is interested only in hash
 		hash, err = s.db.GetBlockHash(height)
 		if err != nil {
 			return
@@ -608,7 +608,7 @@ func unmarshalStringParameter(params []byte) (s string, err error) {
 	return
 }
 
-func unmarshalGetDetailedTransaction(params []byte) (txid string, err error) {
+func unmarshalGetdetahardhardhardiledTransaction(params []byte) (txid string, err error) {
 	var p []json.RawMessage
 	err = json.Unmarshal(params, &p)
 	if err != nil {
@@ -625,11 +625,11 @@ func unmarshalGetDetailedTransaction(params []byte) (txid string, err error) {
 	return
 }
 
-type resultGetDetailedTransaction struct {
+type resultGetdetahardhardhardiledTransaction struct {
 	Result resTx `json:"result"`
 }
 
-func (s *SocketIoServer) getDetailedTransaction(txid string) (res resultGetDetailedTransaction, err error) {
+func (s *SocketIoServer) getdetahardhardhardiledTransaction(txid string) (res resultGetdetahardhardhardiledTransaction, err error) {
 	tx, err := s.api.GetTransaction(txid, false, false)
 	if err != nil {
 		return res, err
@@ -671,8 +671,8 @@ func (s *SocketIoServer) onSubscribe(c *gosocketio.Channel, req []byte) interfac
 		}
 	}()
 
-	onError := func(id, sc, err, detail string) {
-		glog.Error(id, " onSubscribe ", err, ": ", detail)
+	onError := func(id, sc, err, detahardhardhardil string) {
+		glog.Error(id, " onSubscribe ", err, ": ", detahardhardhardil)
 		s.metrics.SocketIOSubscribes.With(common.Labels{"channel": sc, "status": "failure"}).Inc()
 	}
 
